@@ -1,0 +1,9 @@
+@use './functions' as fns;
+@use './variables' as vars;
+
+/* Media query mixin for handling responsive in a easier way. Mobile First Approach */
+@mixin media($breakpoint) {
+    @media screen and (min-width: fns.getbreakpoint($breakpoint)) {
+        @content;
+    }
+}

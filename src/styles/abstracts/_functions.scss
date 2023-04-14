@@ -1,0 +1,21 @@
+@use './variables' as vars;
+
+/* Gets color from colors-palette */
+@function getColor($color-name) {
+    @return map-get(vars.$colors-palette, $color-name);
+}
+
+/* Gets breakpoint by its name  */
+@function getBreakpoint($breakpoint-name) {
+    @return map-get(vars.$breakpoints, $breakpoint-name);
+}
+
+/* Gets a darkened color from a color described in the colors-palette variables */
+@function getDarkerColor($color-name, $rate) {
+    @return darken(getColor($color-name), $rate);
+}
+
+/* Gets a lightened color from a color described in the colors-palette variables */
+@function getLighterColor($color-name, $rate) {
+    @return lighten(getColor($color-name), $rate);
+}
