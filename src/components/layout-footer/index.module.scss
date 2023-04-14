@@ -1,0 +1,18 @@
+@use '/src/styles/abstracts/functions' as fns;
+
+.footer {
+    min-height: 3.75rem; // 60px
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: fns.getColor('reddish');
+
+    & div > h3 {
+        color: fns.getColor('white');
+        font-size: clamp(0.8rem, 1.5vw, 1rem); // Clamps from 20px to 25px;
+        font-weight: 400;
+        text-align: center;
+    }
+}

@@ -1,0 +1,11 @@
+.modal {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+
+    background-color: fns.getColor('white-darkened');
+    border: 1px solid fns.getColor('gray');
+    opacity: 0.95;
+    border-radius: 8px;
+}

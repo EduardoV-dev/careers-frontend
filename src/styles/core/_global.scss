@@ -12,3 +12,16 @@ body {
     background-color: fns.getColor('white');
     font: 400 1rem/1.5 'rubik', Arial, sans-serif;
 }
+
+a {
+    display: block;
+
+    text-decoration: none;
+    color: fns.getColor('black');
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}

@@ -10,12 +10,18 @@
     @return map-get(vars.$breakpoints, $breakpoint-name);
 }
 
-/* Gets a darkened color from a color described in the colors-palette variables */
+/* 
+  Gets a darkened color from a color described in the colors-palette variables 
+  $rate should be a value between 0% and 100%
+*/
 @function getDarkerColor($color-name, $rate) {
     @return darken(getColor($color-name), $rate);
 }
 
-/* Gets a lightened color from a color described in the colors-palette variables */
+/* 
+  Gets a lightened color from a color described in the colors-palette variables 
+  $rate should be a value between 0% and 100%
+*/
 @function getLighterColor($color-name, $rate) {
     @return lighten(getColor($color-name), $rate);
 }

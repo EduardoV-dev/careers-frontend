@@ -1,0 +1,176 @@
+@use '/src/styles/abstracts/functions' as fns;
+@use '/src/styles/abstracts/mixins' as mi;
+
+/* Index Component Styles */
+
+.container {
+    height: 5rem; // 80px
+    position: sticky;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+
+    transition: all 0.2s ease;
+
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+
+        width: 0;
+        height: 100%;
+
+        background-color: fns.getColor('white-darkened');
+        transition: all 0.6s ease;
+    }
+
+    &.scrolled {
+        height: 3.75rem; // 60px
+
+        &::before {
+            width: 100%;
+        }
+    }
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    &__logo-container a h1 {
+        font-size: 2.5rem;
+        font-weight: 400;
+
+        & > span {
+            display: inline-block;
+            height: 32px;
+            line-height: 32px;
+
+            background-color: fns.getColor('reddish');
+            color: fns.getColor('white');
+            padding-inline: 5px;
+        }
+    }
+}
+
+/* Navbar Component Styles */
+
+.content {
+    &__navigation-menu-container {
+        position: fixed;
+        left: 50%;
+
+        width: min(100% - 2rem, 21.875rem); // 350px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        background-color: fns.getColor('white-darkened');
+        border-radius: 8px;
+        border: 1px solid fns.getColor('gray');
+        opacity: 0.95;
+        padding: 2rem 1rem;
+
+        transition: all 0.3s ease;
+
+        /* Properties for transition between classes */
+
+        opacity: 0;
+        top: 0%;
+        transform: translate(-50%, 0);
+        visibility: hidden;
+
+        /* END Properties for classes transition */
+
+        /* Transition between classes */
+
+        &.displayed {
+            opacity: 1;
+            top: 20%;
+            transform: translate(-50%, -20%);
+            visibility: visible;
+        }
+
+        /* END Transition between classes */
+
+        @include mi.media('lg') {
+            /** Reset styles to default */
+
+            position: unset;
+            top: unset;
+            left: unset;
+            transform: unset;
+
+            width: unset; // 350px;
+
+            background-color: unset;
+            border-radius: unset;
+            border: unset;
+            opacity: unset;
+            padding: unset;
+            visibility: unset;
+
+            /** END Reset styles to default */
+
+            flex-direction: row;
+            gap: 2rem;
+        }
+    }
+
+    &__navigation-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+
+        // Styling navigation links
+        & > a {
+            transition: all 0.2s ease;
+
+            &:is(:hover, :focus) {
+                color: fns.getColor('reddish');
+            }
+        }
+
+        @include mi.media('lg') {
+            flex-direction: unset;
+
+            gap: 2rem;
+        }
+    }
+
+    &__language-selector {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        background-color: fns.getColor('reddish');
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        user-select: none;
+
+        transition: all 0.2s ease;
+
+        &:is(:hover, &:focus) {
+            background-color: fns.getLighterColor('reddish', 10%);
+        }
+
+        & > span {
+            color: fns.getColor('white');
+        }
+    }
+
+    &__hamburger-button {
+        @include mi.media('lg') {
+            display: none;
+        }
+    }
+}

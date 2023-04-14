@@ -1,12 +1,11 @@
-import { DummyComponent } from '@/components/dummy-component';
+import { Layout } from '@/components/layout';
 
 import type { NextPage } from 'next';
 
 const Home: NextPage = () => (
-    <main>
-        <h1>Hello world</h1>
-        <DummyComponent />
-    </main>
+    <Layout>
+        <h1 style={{ minHeight: '300vh' }}>Hello world</h1>
+    </Layout>
 );
 
 export default Home;
