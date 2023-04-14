@@ -1,24 +1,32 @@
 {
-  "name": "careers-frontend",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "13.3.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "@types/node": "18.15.11",
-    "@types/react": "18.0.35",
-    "@types/react-dom": "18.0.11",
-    "eslint": "8.38.0",
-    "eslint-config-next": "13.3.0",
-    "typescript": "5.0.4"
-  }
+    "name": "careers-frontend",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "check-lint": "next lint",
+        "check-format": "prettier --check .",
+        "lint": "eslint . --ext ts --ext tsx --ext js --fix",
+        "format": "prettier --write ."
+    },
+    "dependencies": {
+        "next": "13.3.0",
+        "react": "18.2.0",
+        "react-dom": "18.2.0"
+    },
+    "devDependencies": {
+        "@types/node": "18.15.11",
+        "@types/react": "18.0.35",
+        "@types/react-dom": "18.0.11",
+        "@typescript-eslint/eslint-plugin": "5.13.0",
+        "eslint": "8.38.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-airbnb-typescript": "^17.0.0",
+        "eslint-config-next": "13.3.0",
+        "eslint-config-prettier": "^8.8.0",
+        "prettier": "^2.8.7",
+        "typescript": "5.0.4"
+    }
 }
