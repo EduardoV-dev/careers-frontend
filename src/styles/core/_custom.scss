@@ -2,3 +2,10 @@
     width: min(100% - 2rem, 75rem);
     margin-inline: auto;
 }
+
+.flex-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}

@@ -1,1 +1,1 @@
-export const num = 1;
+export * from './modules/careers-hero';

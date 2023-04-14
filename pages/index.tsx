@@ -1,10 +1,11 @@
 import { Layout } from '@/components/layout';
+import { CareersHero } from '@/features/careers';
 
 import type { NextPage } from 'next';
 
 const Home: NextPage = () => (
     <Layout>
-        <h1 style={{ minHeight: '300vh' }}>Hello world</h1>
+        <CareersHero />
     </Layout>
 );
 

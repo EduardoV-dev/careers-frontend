@@ -23,5 +23,14 @@ a {
 button {
     background-color: transparent;
     border: none;
+    color: fns.getColor('white');
     outline: none;
+    font: 400 1rem/1.5 'rubik', Arial, sans-serif;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
