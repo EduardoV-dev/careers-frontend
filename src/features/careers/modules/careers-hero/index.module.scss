@@ -2,9 +2,10 @@
 @use '/src/styles/abstracts/mixins' as mi;
 
 .hero {
-    background-image: url('../../assets/images/careers-hero.png');
+    background-image: url('../../assets/images/careers-hero.webp');
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
 
     & > div {
         display: flex;

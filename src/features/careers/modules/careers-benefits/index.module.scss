@@ -15,10 +15,7 @@
         gap: 1rem;
 
         @include mi.media('xl') {
-            grid-template-columns: repeat(
-                auto-fit,
-                minmax(min(100%, 12rem), 1fr)
-            );
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
         }
 
         // Benefit item

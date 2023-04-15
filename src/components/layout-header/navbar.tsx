@@ -23,12 +23,9 @@ export const Navbar = (): JSX.Element => {
         React.useState<boolean>(false);
 
     const hideNavigationMenu = (): void => setIsNavigationMenuDisplayed(false);
-    const displayNavigationMenu = (): void =>
-        setIsNavigationMenuDisplayed(true);
+    const displayNavigationMenu = (): void => setIsNavigationMenuDisplayed(true);
 
-    const handleMenuVisibility = (
-        event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    ): void => {
+    const handleMenuVisibility = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
         event.stopPropagation();
 
         if (isNavigationMenuDisplayed) hideNavigationMenu();
@@ -36,8 +33,7 @@ export const Navbar = (): JSX.Element => {
     };
 
     React.useEffect(() => {
-        if (isNavigationMenuDisplayed)
-            document.addEventListener('click', hideNavigationMenu);
+        if (isNavigationMenuDisplayed) document.addEventListener('click', hideNavigationMenu);
         else document.removeEventListener('click', hideNavigationMenu);
     }, [isNavigationMenuDisplayed]);
 
@@ -59,9 +55,7 @@ export const Navbar = (): JSX.Element => {
     return (
         <>
             <section className={navigationMenuContainerClasses}>
-                <nav className={styles['content__navigation-menu']}>
-                    {NavLinks}
-                </nav>
+                <nav className={styles['content__navigation-menu']}>{NavLinks}</nav>
 
                 <div className={styles['content__language-selector']}>
                     <GlobeIcon />

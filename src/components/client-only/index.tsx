@@ -8,11 +8,7 @@ import React from 'react';
  *    <Component />
  * </ClientOnly>
  */
-export const ClientOnly = ({
-    children,
-}: {
-    children: React.ReactNode;
-}): JSX.Element | null => {
+export const ClientOnly = ({ children }: { children: React.ReactNode }): JSX.Element | null => {
     const [hasMounted, setHasMounted] = React.useState(false);
 
     React.useEffect(() => {

@@ -12,14 +12,11 @@ interface Props {
 }
 
 const ModalComponent = ({ children, className }: Props): JSX.Element | null => {
-    const portalContainer: HTMLElement | null =
-        document.getElementById('portal') || null;
+    const portalContainer: HTMLElement | null = document.getElementById('portal') || null;
 
     return portalContainer
         ? ReactDOM.createPortal(
-              <section className={cn(styles.modal, className)}>
-                  {children}
-              </section>,
+              <section className={cn(styles.modal, className)}>{children}</section>,
               portalContainer,
           )
         : null;

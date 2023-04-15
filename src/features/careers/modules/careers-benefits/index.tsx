@@ -41,28 +41,22 @@ export const CareersBenefits = (): JSX.Element => {
 
     return (
         <section className="section-container">
-            <div className={cn('content-wrapper', styles.content)}>
+            <div data-aos="fade-down-left" className={cn('content-wrapper', styles.content)}>
                 <section>
                     <h3 className="section-subtitle">Benefits</h3>
 
-                    <h2 className="section-title">
-                        Why you Should Join Our Awesome Team
-                    </h2>
+                    <h2 className="section-title">Why you Should Join Our Awesome Team</h2>
 
                     <p className="section-text">
-                        At JLR, we&apos;re committed to creating a workplace
-                        that values diversity, inclusivity, and collaboration.
-                        We believe that when people from different backgrounds
-                        and perspectives come together, great things can happen.
-                        We also know that our employees are our most valuable
-                        asset, which is why we invest in their growth and
-                        development.
+                        At JLR, we&apos;re committed to creating a workplace that values diversity,
+                        inclusivity, and collaboration. We believe that when people from different
+                        backgrounds and perspectives come together, great things can happen. We also
+                        know that our employees are our most valuable asset, which is why we invest
+                        in their growth and development.
                     </p>
                 </section>
 
-                <section className={styles['content__benefits-list']}>
-                    {BenefitsElements}
-                </section>
+                <section className={styles['content__benefits-list']}>{BenefitsElements}</section>
             </div>
         </section>
     );

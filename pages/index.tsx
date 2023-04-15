@@ -1,5 +1,10 @@
 import { Layout } from '@/components/layout';
-import { CareersAbout, CareersBenefits, CareersHero } from '@/features/careers';
+import {
+    CareersAbout,
+    CareersBenefits,
+    CareersHero,
+    CareersOpeningsList,
+} from '@/features/careers';
 
 import type { NextPage } from 'next';
 
@@ -8,6 +13,7 @@ const Home: NextPage = () => (
         <CareersHero />
         <CareersAbout />
         <CareersBenefits />
+        <CareersOpeningsList />
     </Layout>
 );
 
