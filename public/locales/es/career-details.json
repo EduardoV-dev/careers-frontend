@@ -1,0 +1,17 @@
+{
+    "apply-now-button": "Aplicar ahora",
+
+    "apply-container.summary": "Resumen",
+    "apply-container.location": "Ubicación",
+    "apply-container.role": "Rol",
+    "apply-container.opened-on": "Abierta desde",
+
+    "form.title": "Formulario",
+    "form.full-name.label": "Nombre completo",
+    "form.full-name.placeholder": "Ingresa tu nombre completo",
+    "form.email.label": "Correo",
+    "form.email.placeholder": "correo@gmail.com",
+    "form.phone.label": "Teléfono",
+    "form.phone.placeholder": "+505 8145 7391",
+    "form.send-button": "Enviar formulario"
+}

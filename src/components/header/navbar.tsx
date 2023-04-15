@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
 import React from 'react';
 
 import CloseIcon from '@/assets/svg/menu-close.svg';
@@ -10,16 +11,8 @@ import { Backdrop } from '../backdrop';
 
 import styles from './index.module.scss';
 
-const NAVIGATION_LINKS: string[] = [
-    'Home',
-    'About us',
-    'Our business',
-    'Projects',
-    'Services',
-    'Contact',
-];
-
 export const Navbar = (): JSX.Element => {
+    const { t } = useTranslation('common');
     const [isNavigationMenuDisplayed, setIsNavigationMenuDisplayed] =
         React.useState<boolean>(false);
 
@@ -30,6 +23,14 @@ export const Navbar = (): JSX.Element => {
         isNavigationMenuDisplayed ? hideNavigationMenu() : displayNavigationMenu();
 
     /* React Render */
+
+    const NAVIGATION_LINKS: string[] = [
+        t('navbar-home'),
+        t('navbar-about-us'),
+        t('navbar-our-business'),
+        t('navbar-our-projects'),
+        t('navbar-contact'),
+    ];
 
     const NavLinks: JSX.Element[] = NAVIGATION_LINKS.map((name) => (
         <Link href="/" key={name}>

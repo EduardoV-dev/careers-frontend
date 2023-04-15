@@ -1,29 +1,27 @@
 import cn from 'classnames';
+import { useTranslation } from 'next-i18next';
 
 import { Button } from '@/components/button';
 
 import styles from './index.module.scss';
 
-export const CareersHero = (): JSX.Element => (
-    <section className={styles.hero}>
-        <div data-aos="zoom-in-down" className="content-wrapper section-container">
-            <h2>Join Us</h2>
+export const CareersHero = (): JSX.Element => {
+    const { t } = useTranslation('careers');
 
-            <p>
-                We are always looking for talented individuals to join our team. If you are
-                passionate about customer service, committed to excellence, and ready to take your
-                career to the next level, we want to hear from you.
-            </p>
+    return (
+        <section className={styles.hero}>
+            <div data-aos="zoom-in-down" className="content-wrapper section-container">
+                <h2>{t('hero-title')}</h2>
+                <p>{t('hero-subtitle')}</p>
+                <p>
+                    <strong>{t('hero-text-bold')}</strong> {t('hero-text')}
+                </p>
 
-            <p>
-                <strong>Explore our open positions and apply today.</strong> We can&apos;t wait to
-                meet you.
-            </p>
-
-            <div className={cn('flex-group', styles['hero__button-group'])}>
-                <Button color="reddish">Join the team</Button>
-                <Button color="white-outlined">Culture</Button>
+                <div className={cn('flex-group', styles['hero__button-group'])}>
+                    <Button color="reddish">{t('hero-button-join')}</Button>
+                    <Button color="white-outlined">{t('hero-button-culture')}</Button>
+                </div>
             </div>
-        </div>
-    </section>
-);
+        </section>
+    );
+};

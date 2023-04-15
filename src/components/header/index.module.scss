@@ -88,6 +88,7 @@
 
         // Styling navigation links
         & > a {
+            text-transform: capitalize;
             transition: all 0.2s ease;
 
             &:is(:hover, :focus) {

@@ -1,5 +1,4 @@
 /node_modules
-/public
 /assets
 # will ignore any file inside assets file, that belongs to src folder
 /src/**/assets/** 

@@ -1,3 +1,7 @@
+import cn from 'classnames';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 import React from 'react';
 
 import { Button } from '@/components/button';
@@ -12,21 +16,26 @@ import USAFlagIcon from '../../assets/svg/usa-flag.svg';
 import styles from './index.module.scss';
 
 export const LanguageSelector = (): JSX.Element => {
+    const { t } = useTranslation('common');
+    const router = useRouter();
+
     const [isModalVisible, setIsModalVisible] = React.useState<boolean>(false);
 
     const openModal = (): void => setIsModalVisible(true);
     const closeModal = (): void => setIsModalVisible(false);
 
-    const changeLanguage = (): void => {
-        // Function
-        closeModal();
-    };
+    /* React Render */
+
+    const getLanguageItemClasses = (locale: string): string =>
+        cn(styles['choose-language-modal__item'], {
+            [styles.active]: router.locale === locale,
+        });
 
     return (
         <>
             <Button color="reddish" onClick={openModal} className={styles.selector}>
                 <GlobeIcon />
-                <span>English</span>
+                <span>{t('language-selected')}</span>
                 <ChevronDownIcon />
             </Button>
 
@@ -34,30 +43,34 @@ export const LanguageSelector = (): JSX.Element => {
                 className={styles['choose-language-modal']}
                 close={closeModal}
                 isOpen={isModalVisible}
-                title="Choose a language"
+                title={t('language-title')}
             >
                 <section className={styles['choose-language-modal__group']}>
-                    <button className={styles['choose-language-modal__item']} type="button">
-                        <div>
-                            <USAFlagIcon />
-                            <span>English</span>
-                        </div>
+                    <Link href={router.asPath} locale="en">
+                        <button className={getLanguageItemClasses('en')} type="button">
+                            <div>
+                                <USAFlagIcon />
+                                <span>{t('language-english')}</span>
+                            </div>
 
-                        <CheckIcon />
-                    </button>
+                            <CheckIcon />
+                        </button>
+                    </Link>
 
-                    <button className={styles['choose-language-modal__item']} type="button">
-                        <div>
-                            <SpainFlagIcon />
-                            <span>Spanish</span>
-                        </div>
+                    <Link href={router.asPath} locale="es">
+                        <button className={getLanguageItemClasses('es')} type="button">
+                            <div>
+                                <SpainFlagIcon />
+                                <span>{t('language-spanish')}</span>
+                            </div>
 
-                        <CheckIcon />
-                    </button>
+                            <CheckIcon />
+                        </button>
+                    </Link>
                 </section>
 
-                <Button color="reddish" onClick={changeLanguage}>
-                    Done
+                <Button color="reddish" onClick={closeModal}>
+                    {t('language-done')}
                 </Button>
             </Modal>
         </>

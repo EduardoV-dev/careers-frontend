@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import { useTranslation } from 'next-i18next';
 
 import LearningOpportunityIcon from '../../assets/svg/learning-opportunities.svg';
 import SecuredFutureIcon from '../../assets/svg/secured-future.svg';
@@ -12,26 +13,28 @@ interface BenefitItem {
     icon: React.ReactNode;
 }
 
-const BENEFITS_ITEMS: BenefitItem[] = [
-    {
-        icon: <TeamWorkIcon />,
-        label: 'Team work',
-    },
-    {
-        icon: <SecuredFutureIcon />,
-        label: 'Secured future',
-    },
-    {
-        icon: <LearningOpportunityIcon />,
-        label: 'Learning Opportunity',
-    },
-    {
-        icon: <UpgradeSkillsIcon />,
-        label: 'Upgrade Skills',
-    },
-];
-
 export const CareersBenefits = (): JSX.Element => {
+    const { t } = useTranslation('careers');
+
+    const BENEFITS_ITEMS: BenefitItem[] = [
+        {
+            icon: <TeamWorkIcon />,
+            label: t('benefits-team-work'),
+        },
+        {
+            icon: <SecuredFutureIcon />,
+            label: t('benefits-secured-future'),
+        },
+        {
+            icon: <LearningOpportunityIcon />,
+            label: t('benefits-learning-opportunity'),
+        },
+        {
+            icon: <UpgradeSkillsIcon />,
+            label: t('benefits-upgrade-skills'),
+        },
+    ];
+
     const BenefitsElements: JSX.Element[] = BENEFITS_ITEMS.map((benefit) => (
         <article key={benefit.label}>
             <figure>{benefit.icon}</figure>
@@ -43,17 +46,9 @@ export const CareersBenefits = (): JSX.Element => {
         <section className="section-container">
             <div data-aos="fade-down-left" className={cn('content-wrapper', styles.content)}>
                 <section>
-                    <h3 className="section-subtitle">Benefits</h3>
-
-                    <h2 className="section-title">Why you Should Join Our Awesome Team</h2>
-
-                    <p className="section-text">
-                        At JLR, we&apos;re committed to creating a workplace that values diversity,
-                        inclusivity, and collaboration. We believe that when people from different
-                        backgrounds and perspectives come together, great things can happen. We also
-                        know that our employees are our most valuable asset, which is why we invest
-                        in their growth and development.
-                    </p>
+                    <h3 className="section-subtitle">{t('benefits-subtitle')}</h3>
+                    <h2 className="section-title">{t('benefits-title')}</h2>
+                    <p className="section-text">{t('benefits-text')}</p>
                 </section>
 
                 <section className={styles['content__benefits-list']}>{BenefitsElements}</section>

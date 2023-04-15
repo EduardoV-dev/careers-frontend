@@ -1,3 +1,5 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import { Layout } from '@/components/layout';
 import {
     CareersAbout,
@@ -6,7 +8,7 @@ import {
     CareersOpeningsList,
 } from '@/features/careers';
 
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 
 const Home: NextPage = () => (
     <Layout>
@@ -18,3 +20,9 @@ const Home: NextPage = () => (
 );
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => ({
+    props: {
+        ...(await serverSideTranslations(locale as string)),
+    },
+});

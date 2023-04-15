@@ -1,4 +1,5 @@
 import Aos from 'aos';
+import { appWithTranslation } from 'next-i18next';
 import React from 'react';
 
 import type { AppProps } from 'next/app';
@@ -15,4 +16,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     return <Component {...pageProps} />;
 };
 
-export default MyApp;
+export default appWithTranslation(MyApp);
