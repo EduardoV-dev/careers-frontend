@@ -2,13 +2,11 @@
 @use '/src/styles/abstracts/mixins' as mi;
 
 .hero {
-    background-image: url('../../assets/careers-hero.png');
+    background-image: url('../../assets/images/careers-hero.png');
     background-repeat: no-repeat;
     background-position: center;
 
     & > div {
-        min-height: 75vh;
-
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -25,6 +23,7 @@
 
         & > h2 {
             font-size: clamp(1.875rem, 1.5vw, 2.25rem); // From 30px to 36px
+            text-transform: uppercase;
         }
 
         & > p {

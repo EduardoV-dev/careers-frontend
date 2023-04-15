@@ -1,0 +1,20 @@
+@use '/src/styles/abstracts/functions' as fns;
+@use '/src/styles/abstracts/mixins' as mi;
+
+.content {
+    @include mi.media('md') {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+
+        align-items: center;
+    }
+}
+
+.lottie-container {
+    display: none;
+
+    @include mi.media('md') {
+        display: block;
+    }
+}

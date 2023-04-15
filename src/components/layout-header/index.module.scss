@@ -6,6 +6,7 @@
 .container {
     min-height: 3.75rem; // 60px
     position: sticky;
+    z-index: 10;
     top: 0;
 
     display: flex;

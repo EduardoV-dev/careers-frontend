@@ -1,3 +1,5 @@
+@use '/src/styles/abstracts/functions' as fns;
+
 .content-wrapper {
     width: min(100% - 2rem, 75rem);
     margin-inline: auto;
@@ -8,4 +10,33 @@
     flex-wrap: wrap;
     gap: 1rem;
     align-items: center;
+}
+
+.section-container {
+    min-height: calc(85vh - 5rem);
+    padding-block: 5rem;
+}
+
+.bg-white-darkened {
+    background-color: fns.getColor('white-darkened');
+}
+
+.section-subtitle {
+    font-size: 1.125rem; // 18px
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.section-title {
+    font-size: clamp(1.875rem, 1.5vw, 2.25rem); // from 30px to 36px;
+    font-weight: 700;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.section-text {
+    margin-top: 1.5rem;
+    line-height: 1.8;
 }

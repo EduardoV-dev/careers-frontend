@@ -6,7 +6,7 @@ import styles from './index.module.scss';
 
 export const CareersHero = (): JSX.Element => (
     <section className={styles.hero}>
-        <div className="content-wrapper">
+        <div className="content-wrapper section-container">
             <h2>Join Us</h2>
 
             <p>

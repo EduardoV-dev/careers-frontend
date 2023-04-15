@@ -1,0 +1,44 @@
+@use '/src/styles/abstracts/functions' as fns;
+@use '/src/styles/abstracts/mixins' as mi;
+
+.content {
+    display: grid;
+    gap: 2rem;
+
+    @include mi.media('md') {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    &__benefits-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
+        gap: 1rem;
+
+        @include mi.media('xl') {
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(min(100%, 12rem), 1fr)
+            );
+        }
+
+        // Benefit item
+        & > article {
+            figure {
+                width: 74px;
+                height: 74px;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                background-color: fns.getColor('white-lightened');
+                border-radius: 4px;
+            }
+
+            span {
+                display: block;
+                margin-top: 1rem;
+            }
+        }
+    }
+}
