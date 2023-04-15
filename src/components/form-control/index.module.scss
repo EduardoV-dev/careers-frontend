@@ -1,0 +1,12 @@
+.container {
+    margin-bottom: 0.8rem;
+    width: 100%;
+
+    & > label {
+        display: block;
+        margin-bottom: 0.5rem;
+        width: 100%;
+
+        font-weight: 500;
+    }
+}

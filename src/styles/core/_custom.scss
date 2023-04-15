@@ -40,3 +40,28 @@
     margin-top: 1.5rem;
     line-height: 1.8;
 }
+
+.modal-transition {
+    position: fixed;
+    left: 50%;
+
+    /* Properties for transition between classes */
+
+    opacity: 0;
+    top: 0%;
+    transform: translate(-50%, 0);
+    visibility: hidden;
+
+    /* END Properties for classes transition */
+
+    transition: all 0.3s ease;
+
+    /* Transition between classes */
+
+    &.displayed {
+        opacity: 0.95;
+        top: 20%;
+        transform: translate(-50%, -20%);
+        visibility: visible;
+    }
+}

@@ -21,6 +21,10 @@ $button-colors: (
             &:is(:hover, :focus) {
                 background-color: fns.getLighterColor('reddish', 10%);
             }
+
+            &:active {
+                background-color: fns.getColor('reddish');
+            }
         }
 
         &--white-outlined {
@@ -29,6 +33,11 @@ $button-colors: (
             &:is(:hover, :focus) {
                 background-color: fns.getColor('white');
                 color: fns.getColor('reddish');
+            }
+
+            &:active {
+                background-color: unset;
+                color: fns.getColor('white');
             }
         }
     }

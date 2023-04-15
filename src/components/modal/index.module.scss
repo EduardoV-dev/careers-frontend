@@ -1,11 +1,43 @@
+@use '/src/styles/abstracts/functions' as fns;
+@use '/src/styles/abstracts/mixins' as mi;
+
 .modal {
-    position: fixed;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -20%);
+    z-index: 3;
+
+    width: min(100% - 2rem, 40rem); // 640px
 
     background-color: fns.getColor('white-darkened');
     border: 1px solid fns.getColor('gray');
-    opacity: 0.95;
     border-radius: 8px;
+    padding: 1rem 0.8rem;
+
+    @include mi.media('md') {
+        padding: 1rem 1.5rem;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+
+        margin-bottom: 2rem;
+
+        & > p {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        & > button {
+            transition: all 0.2s ease;
+
+            &:is(:hover, :focus) {
+                scale: 0.95;
+            }
+
+            &:active {
+                scale: 1;
+            }
+        }
+    }
 }

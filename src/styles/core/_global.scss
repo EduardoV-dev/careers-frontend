@@ -22,11 +22,29 @@ a {
 }
 
 button {
+    display: block;
+
     background-color: transparent;
     border: none;
     color: fns.getColor('white');
-    outline: none;
     font: 400 1rem/1.5 'rubik', Arial, sans-serif;
+    outline: none;
+}
+
+input {
+    display: block;
+
+    width: 100%;
+
+    border: 1px solid fns.getColor('gray');
+    outline: none;
+    background-color: fns.getColor('white');
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+
+    :is(&, &::placeholder) {
+        font: 400 1rem/1.5 'rubik', Arial, sans-serif;
+    }
 }
 
 img {
@@ -34,4 +52,8 @@ img {
     width: 100%;
     height: auto;
     object-fit: cover;
+}
+
+:is(ul, ol) {
+    margin-left: 1rem;
 }

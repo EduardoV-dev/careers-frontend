@@ -1,0 +1,13 @@
+@use '/src/styles/abstracts/mixins' as mi;
+
+.two-columns-group {
+    @include mi.media('lg') {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+}
+
+.send-application-button {
+    margin: 2rem 0 1rem auto;
+}

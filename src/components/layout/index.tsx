@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { LayoutFooter } from '../layout-footer';
-import { LayoutHeader } from '../layout-header';
+import { Footer } from '../footer';
+import { Header } from '../header';
 
 import styles from './index.module.scss';
 
@@ -11,8 +11,8 @@ interface Props {
 
 export const Layout = ({ children }: Props): JSX.Element => (
     <div className={styles.layout}>
-        <LayoutHeader />
+        <Header />
         <main>{children}</main>
-        <LayoutFooter />
+        <Footer />
     </div>
 );

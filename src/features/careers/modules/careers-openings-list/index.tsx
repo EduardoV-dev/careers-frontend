@@ -17,7 +17,11 @@ const ROLE_LINKS: RoleLink[] = [
 
 export const CareersOpeningsList = (): JSX.Element => {
     const RoleFilterLinks: JSX.Element[] = ROLE_LINKS.map((link) => (
-        <Link className={styles['content__nav-link']} href={`#openings?role=${link.role}`}>
+        <Link
+            className={styles['content__nav-link']}
+            href={`#openings?role=${link.role}`}
+            key={link.role + link.label}
+        >
             {link.label}
         </Link>
     ));

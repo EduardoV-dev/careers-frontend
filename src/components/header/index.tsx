@@ -5,7 +5,7 @@ import React from 'react';
 import styles from './index.module.scss';
 import { Navbar } from './navbar';
 
-export const LayoutHeader = (): JSX.Element => (
+export const Header = (): JSX.Element => (
     <header className={styles.container}>
         <div className={cn('content-wrapper', styles.content)}>
             <section className={styles['content__logo-container']}>

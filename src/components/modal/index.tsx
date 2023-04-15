@@ -2,21 +2,51 @@ import cn from 'classnames';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import CloseRedIcon from '@/assets/svg/close-red.svg';
+
+import { Backdrop } from '../backdrop';
 import { ClientOnly } from '../client-only';
 
 import styles from './index.module.scss';
 
-interface Props {
+export interface Props {
     children: React.ReactNode;
     className: string;
+    isOpen: boolean;
+    title: string;
+
+    close: () => void;
 }
 
-const ModalComponent = ({ children, className }: Props): JSX.Element | null => {
+const ModalComponent = ({
+    children,
+    className,
+    close,
+    isOpen,
+    title,
+}: Props): JSX.Element | null => {
     const portalContainer: HTMLElement | null = document.getElementById('portal') || null;
+    const modalClasses: string = cn('modal-transition', styles.modal, className, {
+        displayed: isOpen,
+    });
 
     return portalContainer
         ? ReactDOM.createPortal(
-              <section className={cn(styles.modal, className)}>{children}</section>,
+              <>
+                  <section className={modalClasses}>
+                      <header className={styles.modal__header}>
+                          <p>{title}</p>
+
+                          <button type="button" onClick={close}>
+                              <CloseRedIcon />
+                          </button>
+                      </header>
+
+                      {children}
+                  </section>
+
+                  <Backdrop {...{ isOpen, close }} />
+              </>,
               portalContainer,
           )
         : null;

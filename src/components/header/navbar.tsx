@@ -2,10 +2,11 @@ import cn from 'classnames';
 import Link from 'next/link';
 import React from 'react';
 
-import ChevronDownIcon from '@/assets/svg/chevron-down.svg';
-import GlobeIcon from '@/assets/svg/globe.svg';
 import CloseIcon from '@/assets/svg/menu-close.svg';
 import HamburgerIcon from '@/assets/svg/menu-hamburger.svg';
+import { LanguageSelector } from '@/features/language-selector';
+
+import { Backdrop } from '../backdrop';
 
 import styles from './index.module.scss';
 
@@ -25,17 +26,8 @@ export const Navbar = (): JSX.Element => {
     const hideNavigationMenu = (): void => setIsNavigationMenuDisplayed(false);
     const displayNavigationMenu = (): void => setIsNavigationMenuDisplayed(true);
 
-    const handleMenuVisibility = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
-        event.stopPropagation();
-
-        if (isNavigationMenuDisplayed) hideNavigationMenu();
-        else displayNavigationMenu();
-    };
-
-    React.useEffect(() => {
-        if (isNavigationMenuDisplayed) document.addEventListener('click', hideNavigationMenu);
-        else document.removeEventListener('click', hideNavigationMenu);
-    }, [isNavigationMenuDisplayed]);
+    const handleMenuVisibility = (): void =>
+        isNavigationMenuDisplayed ? hideNavigationMenu() : displayNavigationMenu();
 
     /* React Render */
 
@@ -46,9 +38,10 @@ export const Navbar = (): JSX.Element => {
     ));
 
     const navigationMenuContainerClasses: string = cn(
+        'modal-transition',
         styles['content__navigation-menu-container'],
         {
-            [styles.displayed]: isNavigationMenuDisplayed,
+            displayed: isNavigationMenuDisplayed,
         },
     );
 
@@ -57,12 +50,10 @@ export const Navbar = (): JSX.Element => {
             <section className={navigationMenuContainerClasses}>
                 <nav className={styles['content__navigation-menu']}>{NavLinks}</nav>
 
-                <div className={styles['content__language-selector']}>
-                    <GlobeIcon />
-                    <span>English</span>
-                    <ChevronDownIcon />
-                </div>
+                <LanguageSelector />
             </section>
+
+            <Backdrop close={hideNavigationMenu} isOpen={isNavigationMenuDisplayed} />
 
             <button
                 className={styles['content__hamburger-button']}

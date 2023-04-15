@@ -6,11 +6,9 @@
 .container {
     min-height: 3.75rem; // 60px
     position: sticky;
-    z-index: 10;
+    z-index: 1;
     top: 0;
 
-    display: flex;
-    align-items: center;
     background-color: fns.getColor('white-darkened');
 }
 
@@ -40,8 +38,7 @@
 
 .content {
     &__navigation-menu-container {
-        position: fixed;
-        left: 50%;
+        z-index: 3;
 
         width: min(100% - 2rem, 21.875rem); // 350px;
 
@@ -53,47 +50,28 @@
         background-color: fns.getColor('white-darkened');
         border-radius: 8px;
         border: 1px solid fns.getColor('gray');
-        opacity: 0.95;
         padding: 2rem 1rem;
 
         transition: all 0.3s ease;
 
-        /* Properties for transition between classes */
-
-        opacity: 0;
-        top: 0%;
-        transform: translate(-50%, 0);
-        visibility: hidden;
-
-        /* END Properties for classes transition */
-
-        /* Transition between classes */
-
-        &.displayed {
-            opacity: 1;
-            top: 20%;
-            transform: translate(-50%, -20%);
-            visibility: visible;
-        }
-
-        /* END Transition between classes */
-
         @include mi.media('lg') {
-            /** Reset styles to default */
+            /** Reset styles to default, reset applied to this class and to 'modal-transition' one */
 
-            position: unset;
-            top: unset;
-            left: unset;
-            transform: unset;
+            :is(&, &.displayed) {
+                position: unset;
+                top: unset;
+                left: unset;
+                transform: unset;
 
-            width: unset; // 350px;
+                width: unset; // 350px;
 
-            background-color: unset;
-            border-radius: unset;
-            border: unset;
-            opacity: unset;
-            padding: unset;
-            visibility: unset;
+                background-color: unset;
+                border-radius: unset;
+                border: unset;
+                opacity: unset;
+                padding: unset;
+                visibility: unset;
+            }
 
             /** END Reset styles to default */
 
@@ -121,27 +99,6 @@
             flex-direction: unset;
 
             gap: 2rem;
-        }
-    }
-
-    &__language-selector {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-
-        background-color: fns.getColor('reddish');
-        border-radius: 8px;
-        padding: 0.5rem 1rem;
-        user-select: none;
-
-        transition: all 0.2s ease;
-
-        &:is(:hover, &:focus) {
-            background-color: fns.getLighterColor('reddish', 10%);
-        }
-
-        & > span {
-            color: fns.getColor('white');
         }
     }
 

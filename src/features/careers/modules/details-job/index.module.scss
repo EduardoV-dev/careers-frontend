@@ -1,0 +1,121 @@
+@use '/src/styles/abstracts/functions' as fns;
+@use '/src/styles/abstracts/mixins' as mi;
+
+.zoom-in-animation {
+    scale: 0;
+    transform: translateY(100px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes zoom-in {
+    to {
+        scale: 1;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.container {
+    margin-block: 3rem;
+
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+
+    @include mi.media('md') {
+        flex-direction: unset;
+
+        display: grid;
+        grid-template-columns: 1fr 0.5fr;
+        gap: 2rem;
+    }
+
+    @include mi.media('xl') {
+        gap: 5rem;
+    }
+}
+
+.job-container {
+    @extend .zoom-in-animation;
+    animation: zoom-in 0.7s ease forwards;
+
+    margin-top: 3rem;
+
+    @include mi.media('md') {
+        margin-top: unset;
+    }
+
+    & h1 {
+        font-size: clamp(1.875rem, 2.5vw, 2.25rem); // 30px - 36px
+        margin-bottom: 2rem;
+    }
+
+    &__description {
+        display: grid;
+        gap: 1.2rem;
+    }
+
+    // Apply now button
+    & > button {
+        margin-top: 3rem;
+        margin-left: auto;
+    }
+}
+
+.job-info-aside {
+    @extend .zoom-in-animation;
+    animation: zoom-in 0.7s ease forwards;
+    animation-delay: 0.4s;
+
+    width: min(100%, 25rem); // 400px
+    margin-inline: auto;
+
+    background-color: fns.getColor('white-darkened');
+    border: 1px solid fns.getColor('gray');
+    border-radius: 8px;
+    padding: 2.5rem 1rem;
+
+    @include mi.media('md') {
+        place-self: start;
+        position: sticky;
+        top: 4.6875rem; // 75px
+    }
+
+    // Apply now button
+    & > button {
+        margin-inline: auto;
+    }
+
+    & > h2 {
+        font-size: 18px;
+        margin-top: 2.5rem;
+    }
+
+    &__list {
+        margin-top: 1rem;
+        display: grid;
+        gap: 3.5rem;
+    }
+
+    &__detail {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.7rem;
+
+        & > div {
+            & > :is(h3, h4) {
+                font-weight: 400;
+            }
+
+            & > h4 {
+                font-size: 1rem; // 16px
+            }
+
+            & > h3 {
+                font-size: 0.875rem; // 14px
+            }
+        }
+    }
+}
