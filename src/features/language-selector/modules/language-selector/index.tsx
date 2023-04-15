@@ -15,6 +15,12 @@ import USAFlagIcon from '../../assets/svg/usa-flag.svg';
 
 import styles from './index.module.scss';
 
+interface LanguageItem {
+    locale: string;
+    icon: React.ReactNode;
+    label: string;
+}
+
 export const LanguageSelector = (): JSX.Element => {
     const { t } = useTranslation('common');
     const router = useRouter();
@@ -26,10 +32,36 @@ export const LanguageSelector = (): JSX.Element => {
 
     /* React Render */
 
+    const supportedLanguages: LanguageItem[] = [
+        {
+            icon: <USAFlagIcon />,
+            label: t('language-english'),
+            locale: 'en',
+        },
+        {
+            icon: <SpainFlagIcon />,
+            label: t('language-spanish'),
+            locale: 'es',
+        },
+    ];
+
     const getLanguageItemClasses = (locale: string): string =>
         cn(styles['choose-language-modal__item'], {
             [styles.active]: router.locale === locale,
         });
+
+    const LanguageItems: JSX.Element[] = supportedLanguages.map((language) => (
+        <Link href={router.asPath} locale={language.locale} key={language.locale + language.label}>
+            <button className={getLanguageItemClasses(language.locale)} type="button">
+                <div>
+                    {language.icon}
+                    <span>{language.label}</span>
+                </div>
+
+                <CheckIcon />
+            </button>
+        </Link>
+    ));
 
     return (
         <>
@@ -46,27 +78,7 @@ export const LanguageSelector = (): JSX.Element => {
                 title={t('language-title')}
             >
                 <section className={styles['choose-language-modal__group']}>
-                    <Link href={router.asPath} locale="en">
-                        <button className={getLanguageItemClasses('en')} type="button">
-                            <div>
-                                <USAFlagIcon />
-                                <span>{t('language-english')}</span>
-                            </div>
-
-                            <CheckIcon />
-                        </button>
-                    </Link>
-
-                    <Link href={router.asPath} locale="es">
-                        <button className={getLanguageItemClasses('es')} type="button">
-                            <div>
-                                <SpainFlagIcon />
-                                <span>{t('language-spanish')}</span>
-                            </div>
-
-                            <CheckIcon />
-                        </button>
-                    </Link>
+                    {LanguageItems}
                 </section>
 
                 <Button color="reddish" onClick={closeModal}>
