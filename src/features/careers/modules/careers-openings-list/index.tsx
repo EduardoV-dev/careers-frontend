@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 import { formatDate } from '@/utils/date-format';
@@ -18,6 +19,8 @@ export const CareersOpeningsList = ({
     roles,
 }: CareersPageDataResponse): JSX.Element => {
     const { t } = useTranslation('careers');
+    const router = useRouter();
+    const selectedRole: string = (router.query.role as string) || '';
 
     const filterOptionsFromRoles: RoleFilterItem[] = roles.data.map((role) => ({
         label: role.attributes.label,
@@ -29,32 +32,45 @@ export const CareersOpeningsList = ({
         ...filterOptionsFromRoles,
     ];
 
+    const getFilterByRoleItemClasses = (filterRole: string): string =>
+        cn(styles['content__nav-link'], {
+            [styles.active]: selectedRole === filterRole,
+        });
+
     const FilterByRoleItems: JSX.Element[] = filterOptions.map((link) => (
         <Link
-            className={styles['content__nav-link']}
-            href={`#openings?role=${link.value}`}
+            className={getFilterByRoleItemClasses(link.value)}
+            href={`?role=${link.value}#openings`}
             key={link.value + link.label}
         >
             {link.label}
         </Link>
     ));
 
-    const CareerOpeningItems: JSX.Element[] = careerOpenings.data.map(({ attributes, id }) => (
-        <Link
-            href={`/careers/${id}`}
-            key={id + attributes.position_name}
-            locale={attributes.locale}
-        >
-            <article className={styles['content__opening-item']}>
-                <h3>{attributes.position_name}</h3>
+    const careerOpeningsFilteredByRole = careerOpenings.data.filter((career) =>
+        selectedRole
+            ? career.attributes.career_role.data.attributes.value === selectedRole
+            : career,
+    );
 
-                <div>
-                    <h5>{t('openings-item-opened-on')}</h5>
-                    <h4>{formatDate(attributes.publishedAt, attributes.locale)}</h4>
-                </div>
-            </article>
-        </Link>
-    ));
+    const CareerOpeningItems: JSX.Element[] = careerOpeningsFilteredByRole.map(
+        ({ attributes, id }) => (
+            <Link
+                href={`/careers/${id}`}
+                key={id + attributes.position_name}
+                locale={attributes.locale}
+            >
+                <article className={styles['content__opening-item']}>
+                    <h3>{attributes.position_name}</h3>
+
+                    <div>
+                        <h5>{t('openings-item-opened-on')}</h5>
+                        <h4>{formatDate(attributes.publishedAt, attributes.locale)}</h4>
+                    </div>
+                </article>
+            </Link>
+        ),
+    );
 
     return (
         <section id="openings" className="section-container bg-white-darkened">
