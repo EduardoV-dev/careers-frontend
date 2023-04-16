@@ -5,12 +5,14 @@ export const fetcher = async (url: string, locale: string, options?: RequestInit
         'Content-Type': 'application/json',
     };
 
-    const query = `${BASE_URL}${url}?locale=${locale}`;
+    const query = `${BASE_URL}${url}?locale=${locale}&populate=*`;
 
     const response = await fetch(query, {
         headers,
         ...options,
     });
+
+    if (response.status === 404) throw new Error('Resource not found');
 
     return response.json();
 };

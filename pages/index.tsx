@@ -6,36 +6,31 @@ import {
     CareersBenefits,
     CareersHero,
     CareersOpeningsList,
+    CareersPageDataResponse,
+    getCareersPageData,
 } from '@/features/careers';
-import { fetcher } from '@/lib/fetcher';
 
-import type { GetServerSideProps, NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 
-const Home: NextPage = () => (
+const Home: NextPage<{ data: CareersPageDataResponse }> = ({ data }) => (
     <Layout>
         <CareersHero />
         <CareersAbout />
         <CareersBenefits />
-        <CareersOpeningsList />
+        <CareersOpeningsList {...data} />
     </Layout>
 );
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
-    const Locale: string = locale as string;
-
-    const roles = await fetcher('/career-roles', Locale);
-    const careerOpenings = await fetcher('/careers', Locale);
-
-    const data = { roles, careerOpenings };
-
-    console.log(data);
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+    const data = await getCareersPageData(locale as string);
 
     return {
         props: {
             data,
             ...(await serverSideTranslations(locale as string)),
+            revalidate: 10,
         },
     };
 };

@@ -1,33 +1,58 @@
 import cn from 'classnames';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+
+import { formatDate } from '@/utils/date-format';
+
+import { CareersPageDataResponse } from '../../types/career-responses';
 
 import styles from './index.module.scss';
 
-interface RoleLink {
-    role: 'none' | 'doctor' | 'call-center-agent' | 'support-role';
+interface RoleFilterItem {
     label: string;
+    value: string;
 }
 
-const ROLE_LINKS: RoleLink[] = [
-    { label: 'All', role: 'none' },
-    { label: 'Doctor', role: 'doctor' },
-    { label: 'Call Center Agent', role: 'call-center-agent' },
-    { label: 'Support role', role: 'support-role' },
-];
-
-export const CareersOpeningsList = (): JSX.Element => {
-    const router = useRouter();
+export const CareersOpeningsList = ({
+    careerOpenings,
+    roles,
+}: CareersPageDataResponse): JSX.Element => {
     const { t } = useTranslation('careers');
 
-    const RoleFilterLinks: JSX.Element[] = ROLE_LINKS.map((link) => (
+    const filterOptionsFromRoles: RoleFilterItem[] = roles.data.map((role) => ({
+        label: role.attributes.label,
+        value: role.attributes.value,
+    }));
+
+    const filterOptions: RoleFilterItem[] = [
+        { label: t('openings-filter-all'), value: '' },
+        ...filterOptionsFromRoles,
+    ];
+
+    const FilterByRoleItems: JSX.Element[] = filterOptions.map((link) => (
         <Link
             className={styles['content__nav-link']}
-            href={`#openings?role=${link.role}`}
-            key={link.role + link.label}
+            href={`#openings?role=${link.value}`}
+            key={link.value + link.label}
         >
             {link.label}
+        </Link>
+    ));
+
+    const CareerOpeningItems: JSX.Element[] = careerOpenings.data.map(({ attributes, id }) => (
+        <Link
+            href={`/careers/${id}`}
+            key={id + attributes.position_name}
+            locale={attributes.locale}
+        >
+            <article className={styles['content__opening-item']}>
+                <h3>{attributes.position_name}</h3>
+
+                <div>
+                    <h5>{t('openings-item-opened-on')}</h5>
+                    <h4>{formatDate(attributes.publishedAt, attributes.locale)}</h4>
+                </div>
+            </article>
         </Link>
     ));
 
@@ -41,35 +66,15 @@ export const CareersOpeningsList = (): JSX.Element => {
                 </header>
 
                 <section className={styles.content}>
-                    <h5 className={styles['content__title-separator']}>Roles</h5>
+                    <h5 className={styles['content__title-separator']}>
+                        {t('openings-roles-title')}
+                    </h5>
+                    <nav>{FilterByRoleItems}</nav>
 
-                    <nav>{RoleFilterLinks}</nav>
-
-                    <h5 className={styles['content__title-separator']}>Careers</h5>
-
-                    <div>
-                        <Link href="/careers/1" locale={router.locale}>
-                            <article className={styles['content__opening-item']}>
-                                <h3>Wordpress Developer</h3>
-
-                                <div>
-                                    <h5>{t('openings-item-opened-on')}</h5>
-                                    <h4>04 / 13 / 2023</h4>
-                                </div>
-                            </article>
-                        </Link>
-
-                        <Link href="/careers/1" locale={router.locale}>
-                            <article className={styles['content__opening-item']}>
-                                <h3>Wordpress Developer</h3>
-
-                                <div>
-                                    <h5>{t('openings-item-opened-on')}</h5>
-                                    <h4>04 / 13 / 2023</h4>
-                                </div>
-                            </article>
-                        </Link>
-                    </div>
+                    <h5 className={styles['content__title-separator']}>
+                        {t('openings-careers-title')}
+                    </h5>
+                    <div>{CareerOpeningItems}</div>
                 </section>
             </div>
         </section>

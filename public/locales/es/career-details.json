@@ -13,5 +13,8 @@
     "form.email.placeholder": "correo@gmail.com",
     "form.phone.label": "Teléfono",
     "form.phone.placeholder": "+505 8145 7391",
-    "form.send-button": "Enviar formulario"
+    "form.send-button": "Enviar formulario",
+
+    "not-found.subtitle": "Empleo no encontrado",
+    "not-found.title": "El empleo que intentó buscar, no existe o ya fué cerrado"
 }

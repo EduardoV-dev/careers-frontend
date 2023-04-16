@@ -13,5 +13,8 @@
     "form.email.placeholder": "email@correo.com",
     "form.phone.label": "Phone",
     "form.phone.placeholder": "+1-541-754-3010",
-    "form.send-button": "Send application"
+    "form.send-button": "Send application",
+
+    "not-found.subtitle": "Job not found",
+    "not-found.title": "The job you tried to look for, does not exist or has been closed"
 }

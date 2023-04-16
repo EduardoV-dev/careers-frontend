@@ -4,6 +4,7 @@
         "project": "./tsconfig.json"
     },
     "rules": {
+        "react/prop-types": "off",
         "import/prefer-default-export": "off",
         "react/react-in-jsx-scope": "off",
         // When declaring props, if a optional prop is declared, will throw an error because defaultProps are not being declared
