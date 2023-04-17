@@ -1,0 +1,111 @@
+@use '/src/styles/abstracts/functions' as fns;
+@use '/src/styles/abstracts/mixins' as mi;
+
+/* Index Component Styles */
+
+.container {
+    min-height: 3.75rem; // 60px
+    position: sticky;
+    z-index: 1;
+    top: 0;
+
+    background-color: fns.getColor('white-darkened');
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    &__logo-container a h5 {
+        font-size: 2.5rem;
+        font-weight: 400;
+
+        & > span {
+            display: inline-block;
+            height: 32px;
+            line-height: 32px;
+
+            background-color: fns.getColor('reddish');
+            color: fns.getColor('white');
+            padding-inline: 5px;
+        }
+    }
+}
+
+/* Navbar Component Styles */
+
+.content {
+    &__navigation-menu-container {
+        z-index: 3;
+
+        width: min(100% - 2rem, 21.875rem); // 350px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        background-color: fns.getColor('white-darkened');
+        border-radius: 8px;
+        border: 1px solid fns.getColor('gray');
+        padding: 2rem 1rem;
+
+        transition: all 0.3s ease;
+
+        @include mi.media('lg') {
+            /** Reset styles to default, reset applied to this class and to 'modal-transition' one */
+
+            :is(&, &.displayed) {
+                position: unset;
+                top: unset;
+                left: unset;
+                transform: unset;
+
+                width: unset; // 350px;
+
+                background-color: unset;
+                border-radius: unset;
+                border: unset;
+                opacity: unset;
+                padding: unset;
+                visibility: unset;
+            }
+
+            /** END Reset styles to default */
+
+            flex-direction: row;
+            gap: 2rem;
+        }
+    }
+
+    &__navigation-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+
+        // Styling navigation links
+        & > a {
+            text-transform: capitalize;
+            transition: all 0.2s ease;
+
+            &:is(:hover, :focus) {
+                color: fns.getColor('reddish');
+            }
+        }
+
+        @include mi.media('lg') {
+            flex-direction: unset;
+
+            gap: 2rem;
+        }
+    }
+
+    &__hamburger-button {
+        @include mi.media('lg') {
+            display: none;
+        }
+    }
+}

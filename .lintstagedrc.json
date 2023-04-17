@@ -1,4 +1,4 @@
 {
     "**/*.{js,ts,tsx}": ["yarn check-format", "yarn check-lint"],
-    "**/*.{css,md,json}": ["yarn format"]
+    "**/*.{scss,css,md,json}": ["yarn format"]
 }

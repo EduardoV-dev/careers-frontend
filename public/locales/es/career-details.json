@@ -1,0 +1,31 @@
+{
+    "apply-now-button": "Aplicar ahora",
+
+    "apply-container.summary": "Resumen",
+    "apply-container.location": "Ubicación",
+    "apply-container.role": "Rol",
+    "apply-container.opened-on": "Abierta desde",
+
+    "form.title": "Formulario",
+    "form.full-name.label": "Nombre completo",
+    "form.full-name.placeholder": "Ingresa tu nombre completo",
+    "form.email.label": "Correo",
+    "form.email.placeholder": "correo@gmail.com",
+    "form.full-name.required": "El nombre no puede estar vacío",
+    "form.email.required": "El correo no puede estar vacío",
+    "form.email.pattern": "El correo no es válido",
+    "form.resume.label": "CV",
+    "form.resume.required": "El CV no es válido",
+    "form.dropzone.enter-file-text": "Suelta tu CV aquí o",
+    "form.dropzone.enter-file-text-highlight": "navega",
+    "form.dropzone.filetypes": "PDF",
+    "form.dropzone.change-file": "Para cambiar el archivo actual, suelta otro o haz clic aquí",
+    "form.toast.success": "Formulario enviado exitosamente",
+    "form.toast.error": "El formulario no pudo ser enviado",
+    "form.phone.label": "Teléfono",
+    "form.phone.placeholder": "+505 8145 7391",
+    "form.send-button": "Enviar formulario",
+
+    "not-found.subtitle": "Empleo no encontrado",
+    "not-found.title": "El empleo que intentó buscar, no existe o ya fué cerrado"
+}
