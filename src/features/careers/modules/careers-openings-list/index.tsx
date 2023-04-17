@@ -21,13 +21,12 @@ export const CareersOpeningsList = ({
     const selectedRole: string = (router.query?.role as string) || '';
     const selectedCountry: string = (router.query?.country as string) || '';
 
-    const careerOpeningsFilteredByCountryAndRole =
-        careerOpenings.data?.filter((career) => {
-            const careerCountry = career.attributes.career_country.data.attributes.country;
-            const careerRole = career.attributes.career_role.data.attributes.value;
+    const careerOpeningsFilteredByCountryAndRole = careerOpenings.data.filter((career) => {
+        const careerCountry = career.attributes.career_country.data.attributes.country;
+        const careerRole = career.attributes.career_role.data.attributes.value;
 
-            return careerCountry.includes(selectedCountry) && careerRole.includes(selectedRole);
-        }) || [];
+        return careerCountry.includes(selectedCountry) && careerRole.includes(selectedRole);
+    });
 
     const CareerOpeningItems: JSX.Element[] = careerOpeningsFilteredByCountryAndRole.map(
         ({ attributes, id }) => (
@@ -74,7 +73,7 @@ export const CareersOpeningsList = ({
                         {careerOpeningsFilteredByCountryAndRole.length > 0 ? (
                             CareerOpeningItems
                         ) : (
-                            <p className="section-subtitle">No careers found</p>
+                            <p className="section-subtitle">{t('openings-no-careers-found')}</p>
                         )}
                     </div>
                 </section>

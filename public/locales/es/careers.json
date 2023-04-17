@@ -31,5 +31,6 @@
     "openings-filter-countries-title": "Países",
     "openings-filter-countries-placeholder": "Selecciona un país",
     "openings-careers-title": "Empleos",
-    "openings-item-opened-on": "Abierta desde"
+    "openings-item-opened-on": "Abierta desde",
+    "openings-no-careers-found": "No se encontraron empleos"
 }

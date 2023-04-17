@@ -43,17 +43,15 @@ export const CareersFilters = ({ countries, roles }: Props): JSX.Element => {
     const selectedRole: string = (router.query?.role as string) || '';
     const selectedCountry: string = (router.query?.country as string) || '';
 
-    const roleBasedFilterOptions: FilterItem[] =
-        roles.data?.map((role) => ({
-            label: role.attributes.label,
-            value: role.attributes.value,
-        })) || [];
+    const roleBasedFilterOptions: FilterItem[] = roles.data.map((role) => ({
+        label: role.attributes.label,
+        value: role.attributes.value,
+    }));
 
-    const countryBasedFilterOptions: FilterItem[] =
-        countries.data?.map((country) => ({
-            label: country.attributes.label,
-            value: country.attributes.country,
-        })) || [];
+    const countryBasedFilterOptions: FilterItem[] = countries.data.map((country) => ({
+        label: country.attributes.label,
+        value: country.attributes.country,
+    }));
 
     return (
         <nav className={styles.content__filters}>
