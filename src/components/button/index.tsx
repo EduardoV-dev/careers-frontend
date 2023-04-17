@@ -6,23 +6,25 @@ interface Props {
     children: React.ReactNode;
     className?: string;
     color: 'reddish' | 'white-outlined';
-    submit?: boolean;
+    disabled?: boolean;
     onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    submit?: boolean;
 }
 
 export const Button = ({
     children,
     className = '',
     color,
-    submit,
+    disabled = false,
     onClick,
+    submit,
 }: Props): JSX.Element => {
     const classes: string = cn(styles.button, className, {
         [styles[`button-color--${color}`]]: color,
     });
 
     return (
-        <button className={classes} type={submit ? 'submit' : 'button'} {...{ onClick }}>
+        <button className={classes} type={submit ? 'submit' : 'button'} {...{ onClick, disabled }}>
             {children}
         </button>
     );

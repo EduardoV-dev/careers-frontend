@@ -1,3 +1,5 @@
+@use '/src/styles/abstracts/functions' as fns;
+
 .container {
     margin-bottom: 0.8rem;
     width: 100%;
@@ -8,5 +10,11 @@
         width: 100%;
 
         font-weight: 500;
+    }
+
+    &__error {
+        font-size: 0.875rem;
+        color: fns.getColor('reddish');
+        margin-top: 0.3rem;
     }
 }

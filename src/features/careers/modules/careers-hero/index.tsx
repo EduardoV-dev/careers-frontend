@@ -12,10 +12,11 @@ export const CareersHero = (): JSX.Element => {
         <section className={styles.hero}>
             <div data-aos="zoom-in-down" className="content-wrapper section-container">
                 <h2>{t('hero-title')}</h2>
-                <p>{t('hero-subtitle')}</p>
-                <p>
+                <h1>{t('hero-subtitle')}</h1>
+
+                <h3>
                     <strong>{t('hero-text-bold')}</strong> {t('hero-text')}
-                </p>
+                </h3>
 
                 <div className={cn('flex-group', styles['hero__button-group'])}>
                     <Button color="reddish">{t('hero-button-join')}</Button>

@@ -4,6 +4,7 @@ import styles from './index.module.scss';
 
 interface Props {
     children: React.ReactNode;
+    errorMessage?: string;
     label: string;
     name: string;
     required?: boolean;
@@ -17,12 +18,14 @@ interface Props {
  *   <input type="text" />
  * </FormControl>
  */
-export const FormControl = ({ children, label, name, required = false }: Props) => (
+export const FormControl = ({ children, errorMessage, label, name, required = false }: Props) => (
     <div className={styles.container}>
         <label htmlFor={name}>
             {label} {required && <span>*</span>}
         </label>
 
         {children}
+
+        {errorMessage && <p className={styles.container__error}>{errorMessage}</p>}
     </div>
 );

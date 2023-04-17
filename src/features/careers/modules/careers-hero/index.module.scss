@@ -15,7 +15,7 @@
 
         color: fns.getColor('white');
 
-        & :is(h2, p) {
+        & :is(h1, h2, h3) {
             width: min(100% - 2rem, 46.875rem); // 750px
             margin-inline: auto;
 
@@ -27,7 +27,9 @@
             text-transform: uppercase;
         }
 
-        & > p {
+        & > :is(h1, h3) {
+            font-size: 1rem;
+            font-weight: 400;
             margin-top: 1rem;
         }
     }

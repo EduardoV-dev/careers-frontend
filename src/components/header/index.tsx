@@ -10,10 +10,10 @@ export const Header = (): JSX.Element => (
         <div className={cn('content-wrapper', styles.content)}>
             <section className={styles['content__logo-container']}>
                 <Link href="/">
-                    <h1>
+                    <h5>
                         <span>J</span>
                         LR
-                    </h1>
+                    </h5>
                 </Link>
             </section>
 

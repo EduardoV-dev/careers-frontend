@@ -94,7 +94,10 @@ export const DetailsJob = ({ career }: Props): JSX.Element | null => {
                 </aside>
             </section>
 
-            <DetailsApplicationForm close={closeModal} isOpen={isModalVisible} />
+            <DetailsApplicationForm
+                modalProps={{ close: closeModal, isOpen: isModalVisible }}
+                jobTitle={job.position_name}
+            />
         </>
     );
 };
