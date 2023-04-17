@@ -31,5 +31,6 @@
     "openings-filter-countries-title": "Countries",
     "openings-filter-countries-placeholder": "Select a country",
     "openings-careers-title": "Careers",
-    "openings-item-opened-on": "Opened on"
+    "openings-item-opened-on": "Opened on",
+    "openings-no-careers-found": "No careers found"
 }
