@@ -1,0 +1,40 @@
+@use '/src/styles/abstracts/functions' as fns;
+@use '/src/styles/abstracts/mixins' as mi;
+
+.hero {
+    background-image: url('../../assets/images/careers-hero.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    & > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        color: fns.getColor('white');
+
+        & :is(h1, h2, h3) {
+            width: min(100% - 2rem, 46.875rem); // 750px
+            margin-inline: auto;
+
+            text-align: center;
+        }
+
+        & > h2 {
+            font-size: clamp(1.875rem, 1.5vw, 2.25rem); // From 30px to 36px
+            text-transform: uppercase;
+        }
+
+        & > :is(h1, h3) {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-top: 1rem;
+        }
+    }
+
+    &__button-group {
+        margin-top: 2.5rem;
+    }
+}

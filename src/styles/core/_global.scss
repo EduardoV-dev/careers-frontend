@@ -1,0 +1,72 @@
+@use '../abstracts/functions' as fns;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    // When production build is running, overflow x is created, making the user able
+    // to scroll beyond the content; to the right side, overflow-x hidden avoids this
+    overflow-x: hidden;
+}
+
+body {
+    background-color: fns.getColor('white');
+    font: 400 1rem/1.5 'rubik', Arial, sans-serif;
+    color: fns.getColor('black');
+}
+
+a {
+    display: block;
+    height: max-content;
+
+    text-decoration: none;
+    color: fns.getColor('black');
+}
+
+button {
+    display: block;
+
+    background-color: transparent;
+    border: none;
+    color: fns.getColor('white');
+    font: 400 1rem/1.5 'rubik', Arial, sans-serif;
+    outline: none;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+input,
+select {
+    display: block;
+
+    width: 100%;
+
+    border: 1px solid fns.getColor('gray');
+    outline: none;
+    background-color: fns.getColor('white');
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+
+    :is(&, &::placeholder) {
+        font: 400 1rem/1.5 'rubik', Arial, sans-serif;
+    }
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+:is(ul, ol) {
+    margin-left: 1rem;
+}

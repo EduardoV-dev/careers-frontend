@@ -1,0 +1,44 @@
+@use '/src/styles/abstracts/functions' as fns;
+
+$button-colors: (
+    'reddish': 'reddish',
+    'white-outlined': 'white-outlined',
+);
+
+.button {
+    min-width: 140px;
+
+    border-radius: 8px;
+    font-size: 14px;
+    padding-block: 0.7rem;
+
+    transition: all 0.2s ease;
+
+    &-color {
+        &--reddish {
+            background-color: fns.getColor('reddish');
+
+            &:is(:hover, :focus) {
+                background-color: fns.getLighterColor('reddish', 10%);
+            }
+
+            &:active {
+                background-color: fns.getColor('reddish');
+            }
+        }
+
+        &--white-outlined {
+            border: 1px solid fns.getColor('white');
+
+            &:is(:hover, :focus) {
+                background-color: fns.getColor('white');
+                color: fns.getColor('reddish');
+            }
+
+            &:active {
+                background-color: unset;
+                color: fns.getColor('white');
+            }
+        }
+    }
+}

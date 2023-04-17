@@ -1,0 +1,121 @@
+@use '/src/styles/abstracts/functions' as fns;
+@use '/src/styles/abstracts/mixins' as mi;
+
+.header {
+    & > p {
+        max-width: 530px;
+        margin-inline: auto;
+        margin-top: 0.8rem;
+    }
+}
+
+.content {
+    margin-top: 2rem;
+
+    display: grid;
+    gap: 1rem;
+
+    @include mi.media('md') {
+        grid-template-columns: 0.29fr 1fr;
+        column-gap: 2rem;
+    }
+
+    &__filters {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    &__nav-link {
+        width: max-content;
+        transition: all 0.2s ease;
+
+        &:is(:hover, :focus) {
+            color: fns.getColor('reddish');
+        }
+    }
+
+    // Openings list
+    & > div {
+        display: grid;
+        gap: 0.5rem;
+    }
+
+    &__title-separator {
+        position: relative;
+        margin-block: 1rem 0.6rem;
+
+        font-size: 1.125rem; // 18px
+        font-weight: 500;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+
+            background-color: fns.getColor('black');
+            opacity: 0.15;
+            width: 35%;
+            height: 1px;
+            border-radius: 8px;
+        }
+
+        @include mi.media('md') {
+            color: fns.getColor('reddish');
+
+            &::before {
+                display: none;
+            }
+
+            &.career {
+                display: none;
+            }
+        }
+    }
+
+    &__opening-item {
+        max-width: 41.5625rem; // 665px
+
+        display: grid;
+        grid-template-columns: 1fr 1fr auto;
+        gap: 1rem;
+
+        background-color: fns.getColor('white');
+        border-radius: 3px;
+        box-shadow: 0px 2px 4px rgba(fns.getColor('black'), 0.05);
+        color: fns.getColor('black');
+        padding: 1.5rem 1rem;
+        user-select: none;
+
+        transition: all 0.2s ease;
+
+        &:is(:hover, :focus) {
+            background-color: fns.getColor('reddish');
+            color: fns.getColor('white');
+        }
+
+        & > h3 {
+            font-size: clamp(1rem, 1.5vw, 1.5rem); // from 16px to 24px
+            font-weight: 500;
+            align-self: center;
+        }
+
+        & > div {
+            place-self: center;
+
+            & > :is(h5, h4) {
+                font-weight: 500;
+            }
+
+            & > h5 {
+                color: fns.getColor('gray');
+            }
+
+            & > h4 {
+                font-size: clamp(1rem, 2.5vw, 1.5rem); // from 16px to 24px
+            }
+        }
+    }
+}

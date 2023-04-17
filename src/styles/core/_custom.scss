@@ -1,0 +1,67 @@
+@use '/src/styles/abstracts/functions' as fns;
+
+.content-wrapper {
+    width: min(100% - 2rem, 62.5rem); // 1000px
+    margin-inline: auto;
+}
+
+.flex-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.section-container {
+    min-height: calc(85vh - 5rem);
+    padding-block: 5rem;
+}
+
+.bg-white-darkened {
+    background-color: fns.getColor('white-darkened');
+}
+
+.section-subtitle {
+    font-size: 1.125rem; // 18px
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.section-title {
+    font-size: clamp(1.875rem, 1.5vw, 2.25rem); // from 30px to 36px;
+    font-weight: 700;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.section-text {
+    margin-top: 1.5rem;
+    line-height: 1.8;
+}
+
+.modal-transition {
+    position: fixed;
+    left: 50%;
+
+    /* Properties for transition between classes */
+
+    opacity: 0;
+    top: 0%;
+    transform: translate(-50%, 0);
+    visibility: hidden;
+
+    /* END Properties for classes transition */
+
+    transition: all 0.3s ease;
+
+    /* Transition between classes */
+
+    &.displayed {
+        opacity: 0.95;
+        top: 20%;
+        transform: translate(-50%, -20%);
+        visibility: visible;
+    }
+}

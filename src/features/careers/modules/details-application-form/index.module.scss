@@ -1,0 +1,49 @@
+@use '/src/styles/abstracts/functions' as fns;
+@use '/src/styles/abstracts/mixins' as mi;
+
+.two-columns-group {
+    @include mi.media('lg') {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+}
+
+.dropzone {
+    min-height: 150px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: fns.getColor('white');
+    border-radius: 8px;
+    border: 1px solid fns.getColor('gray');
+    padding: 1rem;
+    cursor: default;
+
+    &:hover {
+        box-shadow: 0 0 2px 2px rgba(fns.getColor('reddish'), 0.1);
+    }
+
+    & :is(p, span) {
+        text-align: center;
+    }
+
+    & p span {
+        color: fns.getColor('reddish');
+    }
+
+    & div > span {
+        display: block;
+        margin-top: 1rem;
+        font-size: 0.875rem;
+
+        text-align: center;
+    }
+}
+
+.send-application-button {
+    margin: 2rem 0 1rem auto;
+}
