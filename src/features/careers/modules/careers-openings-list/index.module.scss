@@ -17,9 +17,10 @@
 
     @include mi.media('md') {
         grid-template-columns: 0.29fr 1fr;
+        column-gap: 2rem;
     }
 
-    & > nav {
+    &__filters {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
@@ -29,7 +30,7 @@
         width: max-content;
         transition: all 0.2s ease;
 
-        &:is(:hover, :focus, .active) {
+        &:is(:hover, :focus) {
             color: fns.getColor('reddish');
         }
     }
@@ -47,12 +48,9 @@
         font-size: 1.125rem; // 18px
         font-weight: 500;
 
-        @include mi.media('md') {
-            display: none;
-        }
-
         &::before {
             content: '';
+            display: block;
             position: absolute;
             bottom: -5px;
             left: 0;
@@ -62,6 +60,18 @@
             width: 35%;
             height: 1px;
             border-radius: 8px;
+        }
+
+        @include mi.media('md') {
+            color: fns.getColor('reddish');
+
+            &::before {
+                display: none;
+            }
+
+            &.career {
+                display: none;
+            }
         }
     }
 

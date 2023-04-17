@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { Layout } from '@/components/layout';
@@ -12,15 +13,23 @@ import {
 
 import type { GetStaticProps, NextPage } from 'next';
 
-const Home: NextPage<{ data: CareersPageDataResponse }> = ({ data }) => (
-    <Layout>
-        <CareersHero />
-        <CareersAbout />
-        <CareersBenefits />
-        <CareersOpeningsList {...data} />
-    </Layout>
-);
+const Home: NextPage<{ data: CareersPageDataResponse }> = ({ data }) => {
+    const { t } = useTranslation('careers');
 
+    return (
+        <Layout
+            seo={{
+                title: t('seo-title') as string,
+                description: t('seo-description') as string,
+            }}
+        >
+            <CareersHero />
+            <CareersAbout />
+            <CareersBenefits />
+            <CareersOpeningsList {...data} />
+        </Layout>
+    );
+};
 export default Home;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {

@@ -8,7 +8,12 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 const CareerDetails: NextPage<{ career: CareerDetailsPageResponse }> = ({
     career,
 }): JSX.Element => (
-    <Layout>
+    <Layout
+        seo={{
+            title: career?.data.attributes.position_name || '',
+            description: career?.data.attributes.position_name || '',
+        }}
+    >
         <DetailsJob {...{ career }} />
     </Layout>
 );

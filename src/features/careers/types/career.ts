@@ -15,5 +15,6 @@ interface CareerOpeningAttributes {
     career_role: StrapiEntities.StrapiDataObject<CareerRoleAttributes>;
 }
 
+export interface CareerCountry extends StrapiEntities.BaseEntity<CareerCountryAttributes> {}
 export interface CareerOpening extends StrapiEntities.BaseEntity<CareerOpeningAttributes> {}
 export interface CareerRole extends StrapiEntities.BaseEntity<CareerRoleAttributes> {}

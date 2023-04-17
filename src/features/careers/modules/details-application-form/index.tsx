@@ -32,12 +32,14 @@ export const DetailsApplicationForm = ({ jobTitle, modalProps }: Props): JSX.Ele
     const { t } = useTranslation('career-details');
 
     const form = useForm<ApplicationForm>();
-    const [isSubmittingForm, setIsSubmittingForm] = React.useState<boolean>(false);
+    const [isFormDisabled, setIsFormDisabled] = React.useState<boolean>(false);
 
     const { errors } = form.formState;
 
     const onSubmit: SubmitHandler<ApplicationForm> = async (data) => {
-        setIsSubmittingForm(true);
+        if (isFormDisabled) return;
+        setIsFormDisabled(true);
+
         const base64Resume = await toBase64(data.resume as File);
         const jobApplication: JobApplication = {
             ...data,
@@ -51,8 +53,7 @@ export const DetailsApplicationForm = ({ jobTitle, modalProps }: Props): JSX.Ele
             form.reset();
         } catch (error) {
             toast.error(t('form.toast.error'));
-        } finally {
-            setIsSubmittingForm(false);
+            setIsFormDisabled(false);
         }
     };
 
@@ -66,7 +67,7 @@ export const DetailsApplicationForm = ({ jobTitle, modalProps }: Props): JSX.Ele
                 <FormControl
                     errorMessage={errors.fullName?.message}
                     label={t('form.full-name.label')}
-                    name="fullName"
+                    id="fullName"
                     required
                 >
                     <input
@@ -83,7 +84,7 @@ export const DetailsApplicationForm = ({ jobTitle, modalProps }: Props): JSX.Ele
                     <FormControl
                         errorMessage={errors.email?.message}
                         label={t('form.email.label')}
-                        name="email"
+                        id="email"
                         required
                     >
                         <input
@@ -100,7 +101,7 @@ export const DetailsApplicationForm = ({ jobTitle, modalProps }: Props): JSX.Ele
                         />
                     </FormControl>
 
-                    <FormControl label={t('form.phone.label')} name="phone">
+                    <FormControl label={t('form.phone.label')} id="phone">
                         <input
                             type="text"
                             id="phone"
@@ -113,7 +114,7 @@ export const DetailsApplicationForm = ({ jobTitle, modalProps }: Props): JSX.Ele
                 <FormControl
                     errorMessage={errors.resume?.message}
                     label={t('form.resume.label')}
-                    name="resume"
+                    id="resume"
                     required
                 >
                     <Controller
@@ -161,7 +162,7 @@ export const DetailsApplicationForm = ({ jobTitle, modalProps }: Props): JSX.Ele
                 <Button
                     color="reddish"
                     className={styles['send-application-button']}
-                    disabled={isSubmittingForm}
+                    disabled={isFormDisabled}
                     submit
                 >
                     {t('form.send-button')}

@@ -6,7 +6,7 @@ interface Props {
     children: React.ReactNode;
     errorMessage?: string;
     label: string;
-    name: string;
+    id: string;
     required?: boolean;
 }
 
@@ -18,9 +18,9 @@ interface Props {
  *   <input type="text" />
  * </FormControl>
  */
-export const FormControl = ({ children, errorMessage, label, name, required = false }: Props) => (
+export const FormControl = ({ children, errorMessage, label, id, required = false }: Props) => (
     <div className={styles.container}>
-        <label htmlFor={name}>
+        <label htmlFor={id}>
             {label} {required && <span>*</span>}
         </label>
 

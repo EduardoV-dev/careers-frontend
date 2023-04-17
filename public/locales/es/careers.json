@@ -1,4 +1,7 @@
 {
+    "seo-title": "Aplica a nuestros empleos",
+    "seo-description": "En JLR, ofrecemos grandes beneficios y experiencia en cualquiera de nuestros empleos, ven y únete a nosotros",
+
     "hero-title": "Unete a nosotros",
     "hero-subtitle": "Siempre estamos buscando personas talentosas para unirse a nuestro equipo. Si le apasiona el servicio al cliente, está comprometido con la excelencia y está listo para llevar su carrera al siguiente nivel, queremos saber de usted.",
     "hero-text-bold": "Explore nuestras posiciones abiertas y presente su solicitud hoy.",
@@ -22,8 +25,11 @@
     "openings-subtitle": "Ven y únete a nosotros",
     "openings-title": "Aperturas de empleo",
     "openings-text": "Siempre estamos buscando emprendedores creativos y talentosos para unirse a la familia JLR. Consulte nuestros puestos vacantes a continuación y complete una solicitud.",
-    "openings-filter-all": "Todos",
-    "openings-roles-title": "Roles",
+    "openings-filters-title": "Filtros",
+    "openings-filter-roles-title": "Roles",
+    "openings-filter-roles-placeholder": "Selecciona un rol",
+    "openings-filter-countries-title": "Países",
+    "openings-filter-countries-placeholder": "Selecciona un país",
     "openings-careers-title": "Empleos",
     "openings-item-opened-on": "Abierta desde"
 }

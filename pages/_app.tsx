@@ -17,7 +17,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
     return (
         <>
-            <Component {...pageProps} />;
+            <Component {...pageProps} />
             <ToastContainer closeOnClick pauseOnHover position="top-right" autoClose={3000} />
         </>
     );

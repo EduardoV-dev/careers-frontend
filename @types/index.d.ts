@@ -2,6 +2,10 @@ declare namespace NodeJS {
     interface ProcessEnv {
         NODE_ENV: string;
         NEXT_PUBLIC_STRAPI_BASE_URL: string;
+        NEXT_PUBLIC_SEO_BANNER: string;
+        NEXT_PUBLIC_SEO_TITLE: string;
+        NEXT_PUBLIC_SEO_DESCRIPTION: string;
+        NEXT_PUBLIC_SEO_DOMAIN: string;
     }
 }
 

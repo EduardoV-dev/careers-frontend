@@ -1,4 +1,7 @@
 {
+    "seo-title": "Apply to our careers",
+    "seo-description": "At JLR, we offer great benefits and experience into any of ours careers, come join us",
+
     "hero-title": "Join us",
     "hero-subtitle": "We are always looking for talented individuals to join our team. If you are passionate about customer service, committed to excellence, and ready to take your career to the next level, we want to hear from you.",
     "hero-text-bold": "Explore our open positions and apply today.",
@@ -22,8 +25,11 @@
     "openings-subtitle": "Come Join Us",
     "openings-title": "Career Openings",
     "openings-text": "We're always looking for creative, talented self-starters to join the JLR family. Check out our open roles below and fill out an application.",
-    "openings-filter-all": "All",
-    "openings-roles-title": "Roles",
+    "openings-filters-title": "Filters",
+    "openings-filter-roles-title": "Roles",
+    "openings-filter-roles-placeholder": "Select a role",
+    "openings-filter-countries-title": "Countries",
+    "openings-filter-countries-placeholder": "Select a country",
     "openings-careers-title": "Careers",
     "openings-item-opened-on": "Opened on"
 }
