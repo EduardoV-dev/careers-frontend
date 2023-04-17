@@ -24,3 +24,5 @@ jobs:
 
             - name: Check production build
               run: yarn build
+              env:
+                  NEXT_PUBLIC_STRAPI_BASE_URL: ${{ secrets.STRAPI_BASE_URL }}
