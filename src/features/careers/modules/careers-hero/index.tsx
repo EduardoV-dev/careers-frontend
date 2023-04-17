@@ -10,7 +10,7 @@ export const CareersHero = (): JSX.Element => {
 
     return (
         <section className={styles.hero}>
-            <div data-aos="zoom-in-down" className="content-wrapper section-container">
+            <div data-aos="zoom-in" className="content-wrapper section-container">
                 <h2>{t('hero-title')}</h2>
                 <h1>{t('hero-subtitle')}</h1>
 

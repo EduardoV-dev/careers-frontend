@@ -21,12 +21,13 @@ export const CareersOpeningsList = ({
     const selectedRole: string = (router.query?.role as string) || '';
     const selectedCountry: string = (router.query?.country as string) || '';
 
-    const careerOpeningsFilteredByCountryAndRole = careerOpenings.data.filter((career) => {
-        const careerCountry = career.attributes.career_country.data.attributes.country;
-        const careerRole = career.attributes.career_role.data.attributes.value;
+    const careerOpeningsFilteredByCountryAndRole =
+        careerOpenings.data?.filter((career) => {
+            const careerCountry = career.attributes.career_country.data.attributes.country;
+            const careerRole = career.attributes.career_role.data.attributes.value;
 
-        return careerCountry.includes(selectedCountry) && careerRole.includes(selectedRole);
-    });
+            return careerCountry.includes(selectedCountry) && careerRole.includes(selectedRole);
+        }) || [];
 
     const CareerOpeningItems: JSX.Element[] = careerOpeningsFilteredByCountryAndRole.map(
         ({ attributes, id }) => (
@@ -49,7 +50,7 @@ export const CareersOpeningsList = ({
 
     return (
         <section id="openings" className="section-container bg-white-darkened">
-            <div data-aos="zoom-out" className="content-wrapper">
+            <div data-aos="zoom-in" className="content-wrapper">
                 <header className={cn('text-center', styles.header)}>
                     <h3 className="section-subtitle">{t('openings-subtitle')}</h3>
                     <h2 className="section-title ">{t('openings-title')}</h2>
@@ -57,7 +58,7 @@ export const CareersOpeningsList = ({
                 </header>
 
                 <section className={styles.content}>
-                    <div>
+                    <div className={styles.content__filters}>
                         <h5 className={styles['content__title-separator']}>
                             {t('openings-filters-title')}
                         </h5>
@@ -69,7 +70,7 @@ export const CareersOpeningsList = ({
                         {t('openings-careers-title')}
                     </h5>
 
-                    <div>
+                    <div className={styles['content__openings-list']}>
                         {careerOpeningsFilteredByCountryAndRole.length > 0 ? (
                             CareerOpeningItems
                         ) : (
