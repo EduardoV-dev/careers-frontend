@@ -44,7 +44,7 @@ export const CareersBenefits = (): JSX.Element => {
 
     return (
         <section className="section-container">
-            <div data-aos="fade-down-left" className={cn('content-wrapper', styles.content)}>
+            <div data-aos="zoom-in-up" className={cn('content-wrapper', styles.content)}>
                 <section>
                     <h3 className="section-subtitle">{t('benefits-subtitle')}</h3>
                     <h2 className="section-title">{t('benefits-title')}</h2>

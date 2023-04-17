@@ -23,7 +23,11 @@
     &__filters {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 2rem;
+
+        @include mi.media('lg') {
+            gap: 0;
+        }
     }
 
     &__nav-link {
@@ -35,8 +39,7 @@
         }
     }
 
-    // Openings list
-    & > div {
+    &__openings-list {
         display: grid;
         gap: 0.5rem;
     }
@@ -64,6 +67,7 @@
 
         @include mi.media('md') {
             color: fns.getColor('reddish');
+            margin-top: 0;
 
             &::before {
                 display: none;

@@ -3,6 +3,7 @@
 .content-wrapper {
     width: min(100% - 2rem, 62.5rem); // 1000px
     margin-inline: auto;
+    overflow: hidden;
 }
 
 .flex-group {

@@ -20,7 +20,7 @@ export const CareersAbout = (): JSX.Element => {
 
     return (
         <section className="section-container bg-white-darkened">
-            <div data-aos="fade-down-right" className={cn('content-wrapper', styles.content)}>
+            <div data-aos="zoom-in-down" className={cn('content-wrapper', styles.content)}>
                 <section>
                     <h3 className="section-subtitle">{t('about-subtitle')}</h3>
                     <h2 className="section-title">{t('about-title')}</h2>

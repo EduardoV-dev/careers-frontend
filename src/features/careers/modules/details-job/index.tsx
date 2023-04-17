@@ -47,7 +47,7 @@ export const DetailsJob = ({ career }: Props): JSX.Element | null => {
     return (
         <>
             <section className={cn('content-wrapper', styles.container)}>
-                <article className={styles['job-container']}>
+                <article data-aos="zoom-out" className={styles['job-container']}>
                     <h1>{job.position_name}</h1>
 
                     <ReactMarkdown className={styles['job-container__description']}>
@@ -57,7 +57,7 @@ export const DetailsJob = ({ career }: Props): JSX.Element | null => {
                     {ApplyNowButton}
                 </article>
 
-                <aside data-aos-delay="400" className={styles['job-info-aside']}>
+                <aside data-aos="zoom-in" data-aos-delay="400" className={styles['job-info-aside']}>
                     {ApplyNowButton}
 
                     <h2>{t('apply-container.summary')}</h2>
