@@ -38,8 +38,8 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     return {
         props: {
             data,
-            revalidate: 10,
             ...(await serverSideTranslations(locale as string, ['common', 'careers'])),
         },
+        revalidate: 10,
     };
 };
