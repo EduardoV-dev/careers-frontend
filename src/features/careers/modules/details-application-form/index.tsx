@@ -13,7 +13,7 @@ import { JobApplication } from '../../types/application-form';
 
 import styles from './index.module.scss';
 
-export const toBase64 = (file: Blob): Promise<string> =>
+const toBase64 = (file: Blob): Promise<string> =>
     new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -62,7 +62,7 @@ export const DetailsApplicationForm = ({ jobTitle, modalProps }: Props): JSX.Ele
     const resumeFileName: string | undefined = (form.watch('resume') as File | undefined)?.name;
 
     return (
-        <Modal title={t('form.title')} className="hola" {...modalProps}>
+        <Modal title={t('form.title')} {...modalProps}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
                 <FormControl
                     errorMessage={errors.fullName?.message}

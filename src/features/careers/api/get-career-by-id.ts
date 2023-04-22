@@ -7,8 +7,7 @@ export const getCareerById = async (
     locale: string,
 ): Promise<CareerDetailsPageResponse> => {
     try {
-        const career = await fetcher(`/careers/${id}`, locale);
-        return career;
+        return await fetcher({ url: `/careers/${id}`, locale });
     } catch (error) {
         return null;
     }

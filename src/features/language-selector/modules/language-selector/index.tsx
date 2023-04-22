@@ -10,18 +10,20 @@ import { Modal } from '@/components/modal';
 import CheckIcon from '../../assets/svg/check.svg';
 import ChevronDownIcon from '../../assets/svg/chevron-down.svg';
 import GlobeIcon from '../../assets/svg/globe.svg';
-import SpainFlagIcon from '../../assets/svg/spain-flag.svg';
-import USAFlagIcon from '../../assets/svg/usa-flag.svg';
 
 import styles from './index.module.scss';
 
-interface LanguageItem {
-    locale: string;
-    icon: React.ReactNode;
-    label: string;
+import type { Language } from '../../types/language';
+
+export interface LanguageSelectorProps {
+    languages: Language[];
 }
 
-export const LanguageSelector = (): JSX.Element => {
+/**
+ * Language selector module for handling internationalization inside the application.
+ * list of supported languages must be passed as a prop (`languages`).
+ */
+export const LanguageSelector = ({ languages }: LanguageSelectorProps): JSX.Element => {
     const { t } = useTranslation('common');
     const router = useRouter();
 
@@ -32,30 +34,17 @@ export const LanguageSelector = (): JSX.Element => {
 
     /* React Render */
 
-    const supportedLanguages: LanguageItem[] = [
-        {
-            icon: <USAFlagIcon />,
-            label: t('language-english'),
-            locale: 'en',
-        },
-        {
-            icon: <SpainFlagIcon />,
-            label: t('language-spanish'),
-            locale: 'es',
-        },
-    ];
-
     const getLanguageItemClasses = (locale: string): string =>
         cn(styles['choose-language-modal__item'], {
             [styles.active]: router.locale === locale,
         });
 
-    const LanguageItems: JSX.Element[] = supportedLanguages.map((language) => (
-        <Link href={router.asPath} locale={language.locale} key={language.locale + language.label}>
-            <button className={getLanguageItemClasses(language.locale)} type="button">
+    const LanguageItems: JSX.Element[] = languages.map((language) => (
+        <Link href={router.asPath} locale={language.code} key={language.code + language.id}>
+            <button className={getLanguageItemClasses(language.code)} type="button">
                 <div>
-                    {language.icon}
-                    <span>{language.label}</span>
+                    <span className={cn('fi', `fi-${language.code}`)} />
+                    <span>{language.name}</span>
                 </div>
 
                 <CheckIcon />
@@ -63,11 +52,14 @@ export const LanguageSelector = (): JSX.Element => {
         </Link>
     ));
 
+    const currentLanguageName: string =
+        languages.find((lang) => lang.code === router.locale)?.name || 'None';
+
     return (
         <>
-            <Button color="reddish" onClick={openModal} className={styles.selector}>
+            <Button color="reddish" className={styles.selector} onClick={openModal}>
                 <GlobeIcon />
-                <span>{t('language-selected')}</span>
+                <span>{currentLanguageName}</span>
                 <ChevronDownIcon />
             </Button>
 

@@ -5,7 +5,7 @@ import React from 'react';
 
 import CloseIcon from '@/assets/svg/menu-close.svg';
 import HamburgerIcon from '@/assets/svg/menu-hamburger.svg';
-import { LanguageSelector } from '@/features/language-selector';
+// import { LanguageSelector } from '@/features/language-selector';
 
 import { Backdrop } from '../backdrop';
 
@@ -51,7 +51,7 @@ export const Navbar = (): JSX.Element => {
             <section className={navigationMenuContainerClasses}>
                 <nav className={styles['content__navigation-menu']}>{NavLinks}</nav>
 
-                <LanguageSelector />
+                {/* <LanguageSelector /> */}
             </section>
 
             <Backdrop close={hideNavigationMenu} isOpen={isNavigationMenuDisplayed} />

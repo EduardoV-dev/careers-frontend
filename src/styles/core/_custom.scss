@@ -3,7 +3,6 @@
 .content-wrapper {
     width: min(100% - 2rem, 62.5rem); // 1000px
     margin-inline: auto;
-    overflow: hidden;
 }
 
 .flex-group {
@@ -16,6 +15,10 @@
 .section-container {
     min-height: calc(85vh - 5rem);
     padding-block: 5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .bg-white-darkened {

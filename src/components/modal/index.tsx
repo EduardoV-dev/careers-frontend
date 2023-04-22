@@ -11,7 +11,7 @@ import styles from './index.module.scss';
 
 export interface Props {
     children: React.ReactNode;
-    className: string;
+    className?: string;
     isOpen: boolean;
     title: string;
 
@@ -20,7 +20,7 @@ export interface Props {
 
 const ModalComponent = ({
     children,
-    className,
+    className = '',
     close,
     isOpen,
     title,

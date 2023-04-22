@@ -6,8 +6,12 @@ Code splitting is a technique of splitting production JavaScript into smaller fi
 
 Implement code splitting into components that are not required in the first render or the user will not see without any application-user interaction (click, keydown, etc).
 
+Hint: When `yarn build` has finished, size and first load js statistics are displayed next to route name (page), if some of these have **red** values, try entering into those pages code and implement lazy loading by "try and error method" (try lazy loading into different components or modules, until statistics turn green). 
+
 Do not code split everything as it might even worsen your application's performance.
-For achieving code splitting in Next.js you can use [dynamic imports](https://nextjs.org/docs/advanced-features/dynamic-import).
+For achieving code splitting in Next.js you can use [dynamic imports](https://nextjs.org/docs/advanced-features/dynamic-import). 
+
+[Dynamic import example](../pages/index.tsx)
 
 ### Component and state optimizations
 

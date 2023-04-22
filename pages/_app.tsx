@@ -6,7 +6,8 @@ import { ToastContainer } from 'react-toastify';
 import type { AppProps } from 'next/app';
 
 import 'aos/dist/aos.css';
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.min.css';
+import 'flag-icons/css/flag-icons.min.css';
 
 import '@/styles/app.scss';
 

@@ -1,10 +1,14 @@
+import dynamic from 'next/dynamic';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { Layout } from '@/components/layout';
-import { PageNotFound404 } from '@/features/misc';
 
 import type { GetStaticProps, NextPage } from 'next';
+
+const PageNotFound404 = dynamic(() =>
+    import('@/features/misc').then((modules) => modules.PageNotFound404),
+);
 
 const PageNotFound: NextPage = (): JSX.Element => {
     const { t } = useTranslation('not-found');

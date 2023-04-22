@@ -3,8 +3,9 @@ import { useTranslation } from 'next-i18next';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
+import notFoundLottie from '@/assets/lotties/not-found.json';
 import { Button } from '@/components/button';
-import { ElementNotFound404 } from '@/features/misc';
+import { Feedback } from '@/components/feedback';
 import { formatDate } from '@/utils/date-format';
 
 import LocationIcon from '../../assets/svg/location.svg';
@@ -30,7 +31,11 @@ export const DetailsJob = ({ career }: Props): JSX.Element | null => {
 
     if (!career)
         return (
-            <ElementNotFound404 subtitle={t('not-found.subtitle')} title={t('not-found.title')} />
+            <Feedback
+                lottie={notFoundLottie}
+                subtitle={t('not-found.subtitle')}
+                title={t('not-found.title')}
+            />
         );
 
     const job = career.data.attributes;
@@ -47,7 +52,7 @@ export const DetailsJob = ({ career }: Props): JSX.Element | null => {
     return (
         <>
             <section className={cn('content-wrapper', styles.container)}>
-                <article data-aos="zoom-out" className={styles['job-container']}>
+                <article className={styles['job-container']}>
                     <h1>{job.position_name}</h1>
 
                     <ReactMarkdown className={styles['job-container__description']}>
@@ -57,7 +62,7 @@ export const DetailsJob = ({ career }: Props): JSX.Element | null => {
                     {ApplyNowButton}
                 </article>
 
-                <aside data-aos="zoom-in" data-aos-delay="400" className={styles['job-info-aside']}>
+                <aside className={styles['job-info-aside']}>
                     {ApplyNowButton}
 
                     <h2>{t('apply-container.summary')}</h2>

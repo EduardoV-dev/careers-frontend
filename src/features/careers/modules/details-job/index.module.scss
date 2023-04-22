@@ -30,6 +30,10 @@
         display: grid;
         grid-template-columns: 1fr 0.5fr;
         gap: 2rem;
+
+        // This height is set, because if the content of the job is short, the aside container will
+        // Get cut off, this min-height value avoids this possible issue
+        min-height: 37.5rem; // 600px
     }
 
     @include mi.media('xl') {
