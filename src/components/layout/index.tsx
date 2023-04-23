@@ -2,13 +2,13 @@ import React from 'react';
 
 import { Footer } from '../footer';
 import { Header } from '../header';
-import { SEO, Props as ISEO } from '../seo';
+import { SEO, SEOProps } from '../seo';
 
 import styles from './index.module.scss';
 
 interface Props {
     children: React.ReactNode;
-    seo: ISEO;
+    seo: SEOProps;
 }
 
 export const Layout = ({ children, seo }: Props): JSX.Element => (

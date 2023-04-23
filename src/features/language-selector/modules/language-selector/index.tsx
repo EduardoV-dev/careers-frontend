@@ -21,6 +21,9 @@ interface LanguageItem {
     label: string;
 }
 
+/**
+ * Language selector module for handling internationalization inside the application.
+ */
 export const LanguageSelector = (): JSX.Element => {
     const { t } = useTranslation('common');
     const router = useRouter();
@@ -32,7 +35,7 @@ export const LanguageSelector = (): JSX.Element => {
 
     /* React Render */
 
-    const supportedLanguages: LanguageItem[] = [
+    const languages: LanguageItem[] = [
         {
             icon: <USAFlagIcon />,
             label: t('language-english'),
@@ -50,8 +53,8 @@ export const LanguageSelector = (): JSX.Element => {
             [styles.active]: router.locale === locale,
         });
 
-    const LanguageItems: JSX.Element[] = supportedLanguages.map((language) => (
-        <Link href={router.asPath} locale={language.locale} key={language.locale + language.label}>
+    const LanguageItems: JSX.Element[] = languages.map((language) => (
+        <Link href={router.asPath} locale={language.locale} key={language.locale}>
             <button className={getLanguageItemClasses(language.locale)} type="button">
                 <div>
                     {language.icon}
@@ -65,7 +68,7 @@ export const LanguageSelector = (): JSX.Element => {
 
     return (
         <>
-            <Button color="reddish" onClick={openModal} className={styles.selector}>
+            <Button color="reddish" className={styles.selector} onClick={openModal}>
                 <GlobeIcon />
                 <span>{t('language-selected')}</span>
                 <ChevronDownIcon />

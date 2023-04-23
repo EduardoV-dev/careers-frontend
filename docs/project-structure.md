@@ -64,4 +64,4 @@ and not
 
 `import { AwesomeComponent } from "@/features/awesome-feature/components/AwesomeComponent`
 
-**Note**: Not all of this folders could be used within an application, only use them if necessary, if for example, within a feature you have multiple forms that require validations, you could create a `validations` folder inside the feature, this means that you can create more folders if you think it's necessary and worthed.
+**Note**: Not all of this folders could be used within an application, only use them if necessary. If within a feature you require a `validations` folder for your forms to reuse validations, you could create it inside the feature, this means that you can create more folders if you think it's necessary and worth it.

@@ -1,9 +1,11 @@
 import cn from 'classnames';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import React from 'react';
 
 import styles from './index.module.scss';
-import { Navbar } from './navbar';
+
+const Navbar = dynamic(() => import('./navbar').then((modules) => modules.Navbar));
 
 export const Header = (): JSX.Element => (
     <header className={styles.container}>

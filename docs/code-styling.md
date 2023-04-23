@@ -18,7 +18,7 @@ e.g: layout-header, openings-list, a-big-component-name
 
 #### Prefer function declaration as consts declarations instead of function
 
-Const functions are better since they can lead a little bit of less code because of its sintax, besides this reason, prefer it because it is a newer standard than `function` keyword declaration. These could lead to an exception: *if you need to access to `this` object in a function, implement the `function` keyword declaration since const declaration does not have access to `this` object*. 
+Const functions are better since they can lead to a little bit of less code because of its sintax, besides this reason, prefer it because it is a newer standard than `function` keyword declaration. These could lead to an exception: *if you need to access to `this` object in a function, implement the `function` keyword declaration since const declaration does not have access to `this` object*. 
 
 e.g: 
 

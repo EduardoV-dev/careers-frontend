@@ -7,6 +7,8 @@ import {
     CareersPageDataResponse,
 } from '../types/career-responses';
 
+import { getAllCareerOpenings } from './get-all-career-openings';
+
 export const getCareersPageData = async (locale: string): Promise<CareersPageDataResponse> => {
     const [roles, countries, careerOpenings] = await Promise.all<
         [
@@ -15,9 +17,9 @@ export const getCareersPageData = async (locale: string): Promise<CareersPageDat
             Promise<CareerOpeningResponse>,
         ]
     >([
-        fetcher('/career-roles', locale),
-        fetcher('/career-countries', locale),
-        fetcher('/careers', locale),
+        fetcher({ url: '/career-roles', locale }),
+        fetcher({ url: '/career-countries', locale }),
+        getAllCareerOpenings(locale),
     ]);
 
     return { careerOpenings, countries, roles };
