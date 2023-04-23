@@ -8,6 +8,8 @@ Careers pages displays the careers that JLR is creating. JAM stack was implement
 * [Application Overview](./docs/application-overview.md).
 * [Code Styling](./docs/code-styling.md).
 * [Components Guide](./docs/components.md).
+* [Errors Handling](./docs/errors-handling.md)
+* [Internationalization](./docs/internationalization.md)
 * [Performance](./docs/performance.md).
 * [Project Configuration](./docs/project-configuration.md)
 * [Project Structure](./docs/project-structure.md).
