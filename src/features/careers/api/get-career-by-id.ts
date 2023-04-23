@@ -8,7 +8,8 @@ export const getCareerById = async (
 ): Promise<CareerDetailsPageResponse> => {
     try {
         return await fetcher({ url: `/careers/${id}`, locale });
-    } catch (error) {
-        return null;
+    } catch (error: any) {
+        if (error.message === '404') return null;
+        throw new Error('Server error');
     }
 };

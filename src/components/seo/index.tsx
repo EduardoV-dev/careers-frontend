@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import React from 'react';
 
+import { SEO_BANNER, SEO_DESCRIPTION, SEO_DOMAIN, SEO_TITLE } from '@/config/env';
+
 export interface Props {
     /** Banner should be a remote source (http) */
     banner?: string;
@@ -9,11 +11,6 @@ export interface Props {
     /** Title for the visited page */
     title?: string;
 }
-
-const DEFAULT_BANNER: string = process.env.NEXT_PUBLIC_SEO_BANNER;
-const DEFAULT_DESCRIPTION: string = process.env.NEXT_PUBLIC_SEO_DESCRIPTION;
-const DEFAULT_TITLE: string = process.env.NEXT_PUBLIC_SEO_TITLE;
-const DOMAIN: string = process.env.NEXT_PUBLIC_SEO_DOMAIN;
 
 /**
  * This component provides SEO support, will inject meta tags into each page
@@ -31,9 +28,9 @@ const DOMAIN: string = process.env.NEXT_PUBLIC_SEO_DOMAIN;
  */
 export const SEO = ({ banner, description, title }: Props): JSX.Element => {
     const seo: Props = {
-        banner: banner || DOMAIN + DEFAULT_BANNER,
-        description: description || DEFAULT_DESCRIPTION,
-        title: `${title || DEFAULT_DESCRIPTION} | ${DEFAULT_TITLE}`,
+        banner: banner || SEO_DOMAIN + SEO_BANNER,
+        description: description || SEO_DESCRIPTION,
+        title: `${title || SEO_DESCRIPTION} | ${SEO_TITLE}`,
     };
 
     return (

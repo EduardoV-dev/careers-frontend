@@ -6,9 +6,9 @@ In this project, there are 3 types of components that are used every component s
 
 #### 1 - Components: 
 
-These are the lowest type in the list. Components are characterized for being not able to do lot of things standalone and need to be used with other components to achieve a goal, this type of component is usually a piece of UI that can be reused across the application. A component could use multiple components to build itself up.
+These are the lowest type in the list. Components are characterized for being not able to do lot of things standalone and need to be used with other components to achieve an objective, this type of component is usually a piece of UI that can be reused across the application. A component could use multiple components to build itself up.
 
-This type of components must always be place within `src/components` folder or a feature component folder (`[feature-name]/components`), if the component is used only in that feature or it has a particular behaviour that would belong only to that feature but could be exported to use anywhere in the project.
+This type of components must always be placed within `src/components` folder or inside a feature component folder (`[feature-name]/components`); if the component is used only in that feature or it has a particular behaviour that would belong only to that feature but could be exported to use anywhere in the project.
 
 e.g: Header, Footer, Button, Input, Modal, etc.   
 e.g in code: [Form Control component](../src/components/form-control)
@@ -26,7 +26,7 @@ e.g in code: [Career Openings Module](../src/features/careers/modules/careers-op
 
 #### 3 - Pages: 
 
-These are the highest type in the list. Pages are a complete view for a single route in Next.js, pages can implement logic and will always implement feature specific modules, plus, it can implement custom rendering techniques that come with Next.js framework (SSR, SSG, ISR, CSR from React library). These are smarter that modules. 
+These are the highest type in the list. Pages are a complete view for a single route in Next.js, pages can implement its own logic and will always implement feature specific modules, plus, it can implement custom rendering techniques that come with Next.js framework (SSR, SSG, ISR, CSR from React library). These are smarter than modules. 
 
 These type of files have a special place in Next.js, which is the `pages` directory.
 

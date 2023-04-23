@@ -1,4 +1,4 @@
-const BASE_URL = process.env.NEXT_PUBLIC_STRAPI_BASE_URL;
+import { STRAPI_BASE_URL } from '@/config/env';
 
 const HEADERS = {
     'Content-Type': 'application/json',
@@ -26,13 +26,13 @@ interface FetcherParams {
  */
 export const fetcher = async ({ locale, options, url }: FetcherParams): Promise<any> => {
     const localeQueryString: string = `locale=${locale ?? 'all'}`;
-    const urlToFetchFrom: string = `${BASE_URL}${url}?${localeQueryString}&populate=*`;
+    const urlToFetchFrom: string = `${STRAPI_BASE_URL}${url}?${localeQueryString}&populate=*`;
     const response: Response = await fetch(urlToFetchFrom, {
         headers: HEADERS,
         ...options,
     });
 
-    if (response.status === 404) throw new Error('Resource not found');
+    if (response.status === 404) throw new Error('404');
 
     return response.json();
 };
@@ -45,7 +45,7 @@ export const fetcher = async ({ locale, options, url }: FetcherParams): Promise<
  * @return Response object
  */
 export const poster = async (url: string, data: any): Promise<any> => {
-    const urlToPushTo: string = BASE_URL + url;
+    const urlToPushTo: string = STRAPI_BASE_URL + url;
     const response: Response = await fetch(urlToPushTo, {
         body: JSON.stringify(data),
         headers: HEADERS,
