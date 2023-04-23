@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { Layout } from '@/components/layout';
@@ -17,17 +18,21 @@ const DetailsJob = dynamic(() =>
 
 const CareerDetails: NextPage<{ career: CareerDetailsPageResponse }> = ({
     career,
-}): JSX.Element => (
-    <Layout
-        seo={{
-            title: career?.data.attributes.position_name || '',
-            description: career?.data.attributes.position_name || '',
-        }}
-    >
-        <DetailsJob {...{ career }} />
-    </Layout>
-);
+}): JSX.Element => {
+    const { t } = useTranslation('career-details');
 
+    return (
+        <Layout
+            seo={{
+                title: career?.data.attributes.position_name || (t('not-found-title') as string),
+                description:
+                    career?.data.attributes.position_name || (t('not-found-subtitle') as string),
+            }}
+        >
+            <DetailsJob {...{ career }} />
+        </Layout>
+    );
+};
 export default CareerDetails;
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {

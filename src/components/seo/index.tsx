@@ -3,7 +3,7 @@ import React from 'react';
 
 import { SEO_BANNER, SEO_DESCRIPTION, SEO_DOMAIN, SEO_TITLE } from '@/config/env';
 
-export interface Props {
+export interface SEOProps {
     /** Banner should be a remote source (http) */
     banner?: string;
     /** Description for the visited page */
@@ -26,8 +26,8 @@ export interface Props {
  *    title="Title for SEO"
  * />
  */
-export const SEO = ({ banner, description, title }: Props): JSX.Element => {
-    const seo: Props = {
+export const SEO = ({ banner, description, title }: SEOProps): JSX.Element => {
+    const seo: SEOProps = {
         banner: banner || SEO_DOMAIN + SEO_BANNER,
         description: description || SEO_DESCRIPTION,
         title: `${title || SEO_DESCRIPTION} | ${SEO_TITLE}`,
